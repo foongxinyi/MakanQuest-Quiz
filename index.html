@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Story Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="makanQuestForm">
+        <div class="story-container">
+            
+            <div class="story-step start-screen active" data-step="0">
+                <div class="start-content">
+                    <h1>The Makan Quest</h1>
+                    <p class="tagline">Build your perfect hawker meal combination!</p>
+                    <p class="tagline">Embark on this food quest to get started!</p>
+                    <img src="images/start.png" alt="Image of start screen" class="step-image"><br>
+
+                    <button class="btn next-btn" data-target="1">Start</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="1">
+                <h2>It's a bustling Friday evening in Singapore. You and your friends have just finished your CCA, and everyone's stomach is growling.
+                    The mission? Create YOUR perfect meal combination.
+                </h2>
+
+                <img src="images/hawker.jpg" alt="Bustling hawker centre" class="step-image"><br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="2">Begin the Quest!</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="2">
+                <h2>Before we start... we need a few of your basic profile information in order to study patterns.<br>
+                    What is your gender?
+                </h2>
+                <img src="images/gender.png" alt="Image of genders" class="step-image"><br>
+                
+                <div class="gender-options">
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="Male"> Male
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="Female"> Female
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="Other"> Other
+                    </label>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="3">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="3">
+                <h2>And...<br>
+                Your age?</h2>
+                <img src="images/age.jpg" alt="Bustling hawker centre" class="step-image"><br>
+                
+                <div class="age-options">
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="Under 15"> Under 15
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="15 - 17"> 15 - 17
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="18 - 24"> 18 - 24
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="25 - 34"> 25 - 34
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="35 - 44"> 35 - 44
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="45 - 54"> 45 - 54
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="55 and above"> 55 and above
+                    </label>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="4">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="4">
+                <h2>The Makan Quest begins!<br>
+                Imagine yourself at the heart of a hawker centre, where you take the first step to build your perfect meal combination: <br>
+                Pick your main dish.
+                </h2><br>
+                <img src="images/main dish.png" alt="Image of main dishes" class="step-image"><br>
+
+                <div class="mains-options">
+                    <label class="radio-label">
+                        <input type="radio" name="mains" value="Chicken Rice"> Chicken Rice
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="mains" value="Nasi Lemak"> Nasi Lemak
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="mains" value="Char Kway Teow"> Char Kway Teow
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="mains" value="Laksa"> Laksa
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="mains" value="Mee Rebus"> Mee Rebus
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="mains" value="Hokkien Mee"> Hokkien Mee
+                    </label>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="5">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="5">
+                <h2>Of course, you can't just have the main dish,  too basic right?<br>
+                Choose two side dishes to pair with your main dish!
+                </h2><br>
+                <img src="images/side dish.png" alt="Image of side dishes" class="step-image"><br>
+                
+                <div class="side-options">
+                    <label class="radio-label">
+                        <input type="checkbox" name="sides" value="Fried Egg"> Fried Egg
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="checkbox" name="sides" value="Otah"> Otah
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="checkbox" name="sides" value="Popiah"> Popiah
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="checkbox" name="sides" value="Satay (Chicken)"> Satay (Chicken)
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="checkbox" name="sides" value="Curry Puff"> Curry Puff
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="checkbox" name="sides" value="Ngoh Hiang"> Ngoh Hiang
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="checkbox" name="sides" value="Kangkong Belacan"> Kangkong Belacan
+                    </label><br>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="6">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="6">
+                <h2>Then... you walk pass the soup stall. The broth is bubbling, the aroma is rich
+                    and suddenly, you are craving something you didn't know you wanted. <br>
+                    Go ahead, pick you soup.
+                </h2><br>
+                <img src="images/soup.png" alt="Image of soups" class="step-image"><br>
+                
+                <div class="soup-options">
+                    <label class="radio-label">
+                        <input type="radio" name="soup" value="Chicken Rice"> Bak Kut Teh
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="soup" value="Nasi Lemak"> Tom Yum Soup
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="soup" value="Char Kway Teow"> Fish Soup
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="soup" value="Laksa"> Lotus Root Soup
+                    </label><br>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="7">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="7">
+                <h2>You're halfway through the journey! Time to refuel. <br>
+                    Pick a drink to power through the last stretch.
+                </h2><br>
+                <img src="images/beverages.png" alt="Image of beverages" class="step-image"><br>
+                
+                <div class="beverage-options">
+                    <label class="radio-label">
+                        <input type="radio" name="beverage" value="Sugarcane Juice"> Sugarcane Juice
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="beverage" value="Teh Tarik"> Teh Tarik
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="beverage" value="Kopi"> Kopi
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="beverage" value="Milo Dinosaur"> Milo Dinosaur
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="beverage" value="Bandung"> Bandung
+                    </label><br>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="8">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="8">
+                <h2>The food quest is nearly complete. Afterall, what's a meal without dessert to finish it off?
+                    End off your food quest with a dessert that hits the spot!
+                </h2><br>
+                <img src="images/desserts.png" alt="Image of desserts" class="step-image"><br>
+                
+                <div class="dessert-options">
+                    <label class="radio-label">
+                        <input type="radio" name="dessert" value="Ice Kacang"> Ice Kacang
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="dessert" value="Chendol"> Chendol
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="dessert" value="Tau Suan"> Tau Suan
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="dessert" value="Pulut Hitam"> Pulut Hitam
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="dessert" value="Cheng Tng"> Cheng Tng
+                    </label><br>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="9">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="9">
+                <h2>You've built your perfect hawker combination. Now, let's find out what kind of taste truly speak to you.<br>
+                    Pick the flavour that you resonate with the most.
+                </h2><br>
+                <img src="images/taste preference.png" alt="Image of taste profile" class="step-image"><br>
+                
+                <div class="taste-options">
+                    <label class="radio-label">
+                        <input type="radio" name="taste preference" value="Savoury"> Savoury
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="taste preference" value="Spicy"> Spicy
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="taste preference" value="Sweet"> Sweet
+                    </label><br>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="10">Next</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="10">
+                <h2>From the north to the east, every corner of Singapore has its own cravings.<br>
+                    Before your quest ends, tell us where you're based!
+                </h2><br>
+                <img src="images/regions.png" alt="Image of regions in Singapore" class="step-image"><br>
+                
+                <div class="area-options">
+                    <label class="radio-label">
+                        <input type="radio" name="area" value="North"> North
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="area" value="South"> South
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="area" value="East"> East
+                    </label><br>
+                    <label class="radio-label">
+                        <input type="radio" name="area" value="West"> West
+                    </label><br>
+            </div>
+            <br>
+
+                <div class="navigation-buttons">
+                    <!--<button type="submit" id="saveDataButton" class="btn next-btn" data-target="11">End the Quest!</button>-->
+                    <button class="btn next-btn" data-target="11">End the Quest!</button>
+                </div>
+            </div>
+
+            <div class="story-step question-page" data-step="11">
+                <h2>You've completed <em>The Ultimate Singapore Food Quest</em> and built a meal that's uniquely yours! <br>
+                    Your choices help us understand what typical Singaporean love. <br>
+                    Thank you for for being part of this journey. Until the next feast!
+                </h2><br>
+                <br>
+            </div>
+
+            </div>
+    
+    </form>            
+    <script src="script.js"></script>
+</body>
+</html>

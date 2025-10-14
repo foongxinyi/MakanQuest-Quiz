@@ -1,0 +1,184 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Changa&display=swap');
+
+/* 1. Base Styles: Set the background and enable centering */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Required for 100vh to work correctly */
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #f4f7f6; /* Plain background color */
+    
+    /* Flexbox setup to center the .story-container card in the middle of the screen */
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    min-height: 100vh; /* Ensures body is at least screen height */
+}
+
+/* style.css (Add this at the end of your file) */
+
+/* 4. Fix for the Form Tag Layout */
+/* We make the form tag fill the entire body height/width so it doesn't break centering */
+#makanQuestForm {
+    /* Set height and width to fill the space available to it */
+    height: 100vh;
+    width: 100%;
+    
+    /* Remove any default margin/padding browsers might apply to forms */
+    margin: 0;
+    padding: 0;
+    
+    /* This makes sure the form container allows the body's centering to work */
+    /* By allowing it to take up the full space required */
+    display: flex; /* Required for the content inside (story-container) to work with height */
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* 2. The Story Container (The Fixed White Card) */
+.story-container {
+    width: 100%;
+    max-width: 650px; /* Max width for desktop */
+    
+    background-color: white; 
+    padding: 40px; /* Padding inside the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    height: 100vh;
+    box-sizing: border-box;
+    /* Set the FIXED height for the card (Adjust this value!) */
+    /*height: 550px; 
+    
+    /* Hides other steps when running the form */
+    overflow: hidden; 
+    position: relative; /* For future animations or absolute positioning */
+}
+
+
+/* 3. Step Visibility (LIVE MODE is on by default for the "Design One" strategy) */
+.story-step {
+    /* Base styles for ALL steps: Fill the container, remove padding/border */
+    /*min-height: 100%;
+    width: 100%;
+    box-sizing: border-box; 
+    
+    /* Hide all steps initially */
+    display: none;
+}
+
+.story-step h2{
+    font-family: 'Changa', sans-serif;
+    color: #4a4e69;
+    line-height: 1.5;
+    /*margin-bottom: -10px;*/
+}
+
+.story-step.active {
+    /* Show only the active step */
+    /*display: block;*/
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;
+    align-items: center;*/
+}
+
+
+
+/* style.css (Add these new styles below the existing code) */
+
+/* --- Start/End Screen Styling (For full content centering) --- */
+
+.start-screen {
+    /* Make the start screen a Flex container to center its content */
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: center; /* Vertically center the .start-content div */
+    align-items: center; /* Horizontally center the .start-content div */
+    text-align: center;
+    padding: 0; /* Remove any default padding */
+}
+
+.start-screen.active {
+    justify-content: center;
+    align-items: center;
+}
+
+.start-content {
+    max-width: 500px; /* Constrain the text block width for readability */
+    /* NOTE: We are relying on the .story-container's 40px padding for space */
+}
+
+/*.start-btn{
+    margin-top: 240px;
+    padding: 15px 30px;
+    font-size: 1.1em;
+}*/
+
+.start-screen h1 {
+    font-size: 2.8em;
+    color: #4a4e69;
+    border-bottom: none; /* Remove any inherited border */
+    margin-bottom: 10px;
+    font-family: 'Changa', sans-serif;
+    text-shadow: 2px 2px 2px #3c3f55;
+}
+
+.start-screen .tagline {
+    font-size: 1.2em;
+    font-style: italic;
+    color: #4a4e69;
+    margin-bottom: 30px;
+}
+
+.radio-label{
+    color: #4a4e69;
+}
+
+/* --- Button Styling (Add to style.css if not present) --- */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.next-btn {
+    background-color: #4a4e69;
+    color: white;
+}
+
+.next-btn:hover {
+    background-color: #333648
+}
+
+.navigation-buttons {
+    margin-top: auto;
+    width: 100%;
+
+}
+
+.step-image {
+    /* Ensure the image scales down, never exceeding its parent's width */
+    max-width: 100%; 
+    
+    /* Ensure the image never exceeds a certain height inside the card */
+    /* This prevents long images from pushing the button off the page */
+    max-height: 270px; /* Adjust this value as needed */
+    
+    /* Good practice: make the corners slightly rounded */
+    border-radius: 5px;
+    
+    /* Add a little space above and below the image */
+    margin: 20px 0; 
+    
+    /* If the image is smaller than its max-width, center it */
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+}
