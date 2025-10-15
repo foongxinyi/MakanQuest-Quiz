@@ -38,7 +38,7 @@ const displayMessage = (message, isError = true) => {
 // 2. Main function to handle step transition and data capture
 document.addEventListener('DOMContentLoaded', () => {
     // Select all step containers and all 'Next' buttons
-    const form = document.getElementById('makanQuestForm');
+    //const form = document.getElementById('makanQuestForm');
     const allSteps = document.querySelectorAll('.story-step');
     const nextButtons = document.querySelectorAll('.next-btn');
     const submitButton = document.getElementById('submitQuestBtn'); // The new final button
@@ -164,10 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
             //const accessKey = accessKeyInput ? accessKeyInput.value : '';
 
             // 3. Prepare the final JSON payload
-            const finalPayload = { ...userChoices };
-
+            //const finalPayload = { ...userChoices };
+            const finalPayload = new URLSearchParams(userChoices);
             // Optional: Log the clean payload for debugging
-            console.log("Final JSON Payload for Google Sheets:", finalPayload);
+            console.log("Final JSON Payload for Google Sheets:", finalPayload.toString());
             //const finalPayload = {
                 // REQUIRED: The Web3Forms access key must be included in the payload
                 //'access_key': accessKey,
@@ -188,17 +188,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 // NOTE: Web3Forms supports receiving JSON directly.
                 const response = await fetch(GAS_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json', // Tell the server we are sending JSON
+                    body: finalPayload,
+                    //headers: {
+                        //'Content-Type': 'application/json', // Tell the server we are sending JSON
                         //'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(finalPayload), // Send the JSON object
+                    //},
+                    //body: JSON.stringify(finalPayload), // Send the JSON object
                 });
                 
                 //const data = await response.json();
                 // Check for success based on GAS return value
                 const responseText = await response.text();
-                let data = { success: false, message: "Unknown response from script." };
+                let data = { success: false, message: "Unknown response from script.", result: "error" };
 
                 try {
                     // Try to parse the response as JSON
@@ -207,10 +208,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Fallback: Check if the response is successful and contains the expected GAS success message
                     //if (response.ok && responseText.includes("Data appended")) {
                     if (response.ok) {
-                        data.success = true; 
-                        data.message = "Successfully written to Google Sheets.";
-                    } else {
-                        data.message = responseText;
+                        data.result = "success";
+                        //data.success = true; 
+                        //data.message = "Successfully written to Google Sheets.";
+                    //} else {
+                        //data.message = responseText;
                     }
                 }
 
