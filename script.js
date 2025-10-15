@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const targetStep = button.getAttribute('data-target');
                     if (targetStep) {
                         showStep(targetStep);
-                        console.log("Current Choices:", userChoices); 
+                        //console.log("Current Choices:", userChoices); 
                     }
                 } 
             });
@@ -164,10 +164,15 @@ document.addEventListener('DOMContentLoaded', () => {
             //const accessKey = accessKeyInput ? accessKeyInput.value : '';
 
             // 3. Prepare the final JSON payload
-            const finalPayload = { ...userChoices };
+            const finalPayload = new URLSearchParams(userChoices);
+            
+            // Log the clean payload for debugging
+            console.log("Final Form Data Payload:", finalPayload.toString());
+
+            //const finalPayload = { ...userChoices };
 
             // Optional: Log the clean payload for debugging
-            console.log("Final JSON Payload for Google Sheets:", finalPayload);
+            //console.log("Final JSON Payload for Google Sheets:", finalPayload);
             //const finalPayload = {
                 // REQUIRED: The Web3Forms access key must be included in the payload
                 //'access_key': accessKey,
@@ -192,7 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         'Content-Type': 'application/json', // Tell the server we are sending JSON
                         //'Accept': 'application/json'
                     },
-                    body: JSON.stringify(finalPayload), // Send the JSON object
+                    //body: JSON.stringify(finalPayload), // Send the JSON object
+                    body: finalPayload,
                 });
                 
                 //const data = await response.json();
