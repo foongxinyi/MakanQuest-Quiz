@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------
 // CONFIGURATION
 // We no longer need FLOW_URL since submission is handled by Web3Forms endpoint in HTML
-//Final Vercel push test
+//Final Vercel push test (please work)
 const GAS_URL = "https://script.google.com/macros/s/AKfycbzkQawPk1xKIvW77DDsGs6urYJnYCXqFY7SE-qWEWoLfhIvlWpP-hv0JE9dipaZBFgb_g/exec";
 
 // 1. Storage Variable for all user selections (Still used for validation)
