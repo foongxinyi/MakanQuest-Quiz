@@ -199,24 +199,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 //const data = await response.json();
                 // Check for success based on GAS return value
                 const responseText = await response.text();
-                let data = { success: false, message: "Unknown response from script.", result: "error" };
+                let data = { result: "error", message: "Unknown response from script." };
+                //let data = { success: false, message: "Unknown response from script.", result: "error" };
 
                 try {
                     // Try to parse the response as JSON
                     data = JSON.parse(responseText);
                 } catch (e) {
+                    console.error("Failed to parse response JSON:", responseText, e);
+                }
                     // Fallback: Check if the response is successful and contains the expected GAS success message
                     //if (response.ok && responseText.includes("Data appended")) {
-                    if (response.ok) {
-                        data.result = "success";
+                    //if (response.ok) {
+                        //data.result = "success";
                         //data.success = true; 
                         //data.message = "Successfully written to Google Sheets.";
                     //} else {
                         //data.message = responseText;
-                    }
-                }
+                    //}
+                //}
 
-                if (response.ok && data.success === "success") {
+                //if (response.ok && data.success === "success") {
+                if (response.ok && data.result === "success") {
                     // Submission successful!
                     console.log('Form data written successfully to Google Sheets.');
 
