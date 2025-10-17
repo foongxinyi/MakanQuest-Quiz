@@ -154,7 +154,8 @@ body {
 }
 
 .next-btn:hover {
-    background-color: #333648
+    background-color: #333648;
+    transform: translateY(-1px);
 }
 
 .navigation-buttons {
@@ -181,4 +182,86 @@ body {
     display: block; 
     margin-left: auto;
     margin-right: auto;
+}
+
+/* --- NEW OPTION CARD STYLING FOR RADIO/CHECKBOX INPUTS --- */
+/* ====================================================== */
+
+/* 1. Hide the native radio/checkbox input */
+.radio-label input[type="radio"],
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+/* 2. Grid/Flex layout for option groups */
+.option-group {
+    display: grid;
+    /* Default to 3 columns, making them look like nice selection cards */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Layout for groups that need more vertical space (like Age, Soup, Beverages) */
+.column-group {
+    /* Set to 2 columns on small/medium screens */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* Allow them to flow vertically better */
+    gap: 12px 15px; 
+}
+
+/* Layout for the Mains question (step 4) to allow for longer names */
+.large-group {
+     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+
+/* 3. Style the Option Card (the visual button) */
+.option-card {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    text-align: center;
+    
+    background-color: #ffffff; /* White background */
+    color: #4a4e69; /* Text color */
+    border: 2px solid #e0e0e0; /* Subtle border */
+    border-radius: 8px;
+    
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+    user-select: none; /* Prevents text selection on rapid tapping */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* 4. Hover Effect (Light up on hover) */
+.option-card:hover {
+    background-color: #f7f7f7; /* Slightly lighter background */
+    border-color: #b0b3c3; /* Border light up */
+    box-shadow: 0 0 8px rgba(74, 78, 105, 0.2); /* Soft shadow for "light up" */
+}
+
+/* 5. Selected Effect (Darkened background when checked) */
+
+/* Radio Buttons (Single Choice) */
+.radio-label input[type="radio"]:checked + .option-card {
+    background-color: #4a4e69; /* Darkened background */
+    color: white; /* White text */
+    border-color: #4a4e69;
+    box-shadow: 0 0 10px rgba(74, 78, 105, 0.4); /* Stronger shadow to pop */
+}
+
+/* Checkboxes (Multiple Choice - Step 5) */
+.checkbox-label input[type="checkbox"]:checked + .option-card {
+    background-color: #4a4e69; /* Darkened background */
+    color: white; /* White text */
+    border-color: #4a4e69;
+    box-shadow: 0 0 10px rgba(74, 78, 105, 0.4);
+}
+
+/* Reset hover for checked item */
+.radio-label input[type="radio"]:checked + .option-card:hover,
+.checkbox-label input[type="checkbox"]:checked + .option-card:hover {
+    background-color: #4a4e69; /* Keep the selected color */
 }

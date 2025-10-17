@@ -34,6 +34,15 @@ const displayMessage = (message, isError = true) => {
     }, 4000);
 };
 
+// Function to reset button visuals for a given group/step
+const resetVisuals = (key, stepElement) => {
+    // Use the step element to find only the buttons in the current step
+    stepElement.querySelectorAll(`[data-key="${key}"]`).forEach(btn => {
+        // Remove Tailwind classes used for the 'active' state
+        btn.classList.remove('bg-red-600', 'border-red-600', 'shadow-xl'); 
+        btn.classList.add('bg-gray-100', 'border-gray-300', 'shadow-md');
+    });
+};
 
 // 2. Main function to handle step transition and data capture
 document.addEventListener('DOMContentLoaded', () => {
