@@ -265,3 +265,67 @@ body {
 .checkbox-label input[type="checkbox"]:checked + .option-card:hover {
     background-color: #4a4e69; /* Keep the selected color */
 }
+
+/* New Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    /* Adjustments for tablets (e.g., iPad) */
+    .story-container {
+        padding: 20px; /* Reduce padding for smaller screens */
+    }
+    
+    .responsive-heading {
+        font-size: 1.8em; /* Smaller headings */
+    }
+    
+    .responsive-text {
+        font-size: 1em; /* Smaller text */
+    }
+    
+    .option-group, .column-group {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Fewer columns for options */
+        gap: 8px; /* Reduce gap between options */
+    }
+    
+    .step-image {
+        max-height: 200px; /* Smaller images */
+    }
+    
+    .btn {
+        padding: 8px 16px; /* Smaller buttons */
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjustments for mobile phones */
+    .story-container {
+        padding: 10px; /* Even less padding */
+    }
+    
+    .responsive-heading {
+        font-size: 1.4em; /* Even smaller headings */
+    }
+    
+    .responsive-text {
+        font-size: 0.9em; /* Smaller text */
+    }
+    
+    .option-group, .column-group {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Single column for options on very small screens */
+        gap: 6px;
+    }
+    
+    .step-image {
+        max-height: 150px; /* Smaller images for phones */
+    }
+    
+    .btn {
+        width: 100%; /* Full-width buttons for easy tapping */
+        padding: 10px;
+        font-size: 1em;
+    }
+    
+    .navigation-buttons {
+        margin-top: 10px; /* Reduce margin */
+    }
+}
