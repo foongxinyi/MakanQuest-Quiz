@@ -4,6 +4,13 @@
 //Final Vercel push test (please work)
 const GAS_URL = "https://script.google.com/macros/s/AKfycbzkQawPk1xKIvW77DDsGs6urYJnYCXqFY7SE-qWEWoLfhIvlWpP-hv0JE9dipaZBFgb_g/exec";
 
+// Personality descriptions based on taste preference
+const personalityDescriptions = {
+    "Sweet": "Balanced, comforting, and prioritizes harmony and kindness in all aspects of life.",
+    "Savoury": "Reliable, classic, deeply appreciates the fundamentals, and values time-tested methods.",
+    "Spicy": "Bold, adventurous, and always seeking the next thrilling experience."
+};
+
 // 1. Storage Variable for all user selections (Still used for validation)
 const userChoices = {};
 
@@ -54,12 +61,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to show a specific step
     const showStep = (targetStep) => {
+        console.log('Attempting to show step:', targetStep);  // Debugging log
         allSteps.forEach(step => {
             // Hide all steps first
             step.classList.remove('active');
             // Show the target step
             if (step.getAttribute('data-step') === String(targetStep)) {
                 step.classList.add('active');
+
+                // Update the question indicator
+                const indicator = document.getElementById('question-indicator');
+                if (indicator) {
+                    console.log('Setting indicator for step:', targetStep);
+                    if (targetStep >= '2' && targetStep <= '10') {
+                        const questionNumber = parseInt(targetStep) - 1;  // Step 2 = Q1, Step 3 = Q2, etc.
+                        indicator.textContent = `Q${questionNumber}/10`;  // e.g., Q1/10 for step 2
+                        indicator.style.display = 'block';  // Show the indicator
+                        console.log('Updated indicator to:', indicator.textContent);
+                    } else {
+                        indicator.textContent = '';  // Clear or hide for other steps
+                        indicator.style.display = 'none';
+                    }
+                } else {
+                    console.log('Question indicator element not found!');
+                }
             }
         });
     };
@@ -124,6 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return true; 
     };
 
+    // Add event listeners to inputs for immediate validation and message removal
+    document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
+        input.addEventListener('change', () => {
+            const currentStepElement = input.closest('.story-step');
+            if (currentStepElement && currentStepElement.classList.contains('active')) {
+                const isNowValid = captureSelection(currentStepElement);
+                if (isNowValid) {
+                    const msgDiv = document.getElementById('temp-message');
+                    if (msgDiv) {
+                        msgDiv.remove();  // Remove the message if the step is now valid
+                    }
+                }
+            }
+        });
+    });
+
     // 3. Attach Event Listener to ALL next buttons (Regular Navigation)
     nextButtons.forEach(button => {
         // Exclude the new dedicated submit button from regular navigation
@@ -161,6 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!isFinalSelectionValid) {
                 return; // Stop the process if the last selection is invalid
+            }
+
+            // Remove the message if the final selection is valid
+            const msgDiv = document.getElementById('temp-message');
+            if (msgDiv) {
+                msgDiv.remove();  // Immediately remove the message
             }
 
             // 2. Set loading state
@@ -232,6 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok && data.result === "success") {
                     // Submission successful!
                     console.log('Form data written successfully to Google Sheets.');
+
+                    const tastePreference = userChoices["taste preference"];
+                    const descElement = document.getElementById('personality-desc');
+                    if (descElement) {
+                        descElement.textContent = personalityDescriptions[tastePreference] || "a unique flavor explorer with taste yet to be defined!";
+                    }
 
                     // 5. Manually advance to the final thank-you step (data-step="11")
                     const targetStep = submitButton.getAttribute('data-target');

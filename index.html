@@ -13,7 +13,8 @@
         <!--<input type="hidden" name="access_key" value="e2f142ed-4181-47ad-8e1c-aaee4ae2b8c1">-->
         
         <div class="story-container">
-            
+            <div id="question-indicator" class="question-indicator">Test Text</div>
+
             <div class="story-step start-screen active" data-step="0">
                 <div class="start-content">
                     <h1 class="responsive-heading">The Makan Quest</h1>
@@ -47,17 +48,16 @@
                     <label class="radio-label">
                         <input type="radio" name="gender" value="Male">
                         <div class = "option-card">Male</div>
-                    </label><br>
+                    </label>
                     <label class="radio-label">
                         <input type="radio" name="gender" value="Female">
                         <div class = "option-card">Female</div>
-                    </label><br>
+                    </label>
                     <label class="radio-label">
                         <input type="radio" name="gender" value="Other">
                         <div class = "option-card">Other</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="3">Next</button>
@@ -99,7 +99,6 @@
                         <div class="option-card">55 and above</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="4">Next</button>
@@ -139,7 +138,6 @@
                         <div class="option-card">Hokkien Mee</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="5">Next</button>
@@ -182,7 +180,6 @@
                         <div class="option-card">Kangkong Belacan</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="6">Next</button>
@@ -192,8 +189,8 @@
             <div class="story-step question-page" data-step="6">
                 <h2 class="responsive-heading">Then... you walk pass the soup stall. The broth is bubbling, the aroma is rich
                     and suddenly, you are craving something you didn't know you wanted. <br>
-                    Go ahead, pick you soup.
-                </h2><br>
+                    Go ahead, pick your soup.
+                </h2>
                 <img src="images/soup.png" alt="Image of soups" class="step-image"><br>
                 
                 <div class="soup-options option-group column-group">
@@ -214,7 +211,6 @@
                         <div class="option-card">Lotus Root Soup</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="7">Next</button>
@@ -224,7 +220,7 @@
             <div class="story-step question-page" data-step="7">
                 <h2 class="responsive-heading">You're halfway through the journey! Time to refuel. <br>
                     Pick a drink to power through the last stretch.
-                </h2><br>
+                </h2>
                 <img src="images/beverages.png" alt="Image of beverages" class="step-image"><br>
                 
                 <div class="beverage-options option-group column-group">
@@ -249,7 +245,6 @@
                         <div class="option-card">Bandung</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="8">Next</button>
@@ -259,7 +254,7 @@
             <div class="story-step question-page" data-step="8">
                 <h2 class="responsive-heading">The food quest is nearly complete. Afterall, what's a meal without dessert to finish it off?
                     End off your food quest with a dessert that hits the spot!
-                </h2><br>
+                </h2>
                 <img src="images/desserts.png" alt="Image of desserts" class="step-image"><br>
                 
                 <div class="dessert-options option-group column-group">
@@ -284,7 +279,6 @@
                         <div class="option-card">Cheng Tng</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="9">Next</button>
@@ -294,7 +288,7 @@
             <div class="story-step question-page" data-step="9">
                 <h2 class="responsive-heading">You've built your perfect hawker combination. Now, let's find out what kind of taste truly speak to you.<br>
                     Pick the flavour that you resonate with the most.
-                </h2><br>
+                </h2>
                 <img src="images/taste preference.png" alt="Image of taste profile" class="step-image"><br>
                 
                 <div class="taste-options option-group">
@@ -311,7 +305,6 @@
                         <div class="option-card">Sweet</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <button class="btn next-btn" data-target="10">Next</button>
@@ -321,7 +314,7 @@
             <div class="story-step question-page" data-step="10">
                 <h2 class="responsive-heading">From the north to the east, every corner of Singapore has its own cravings.<br>
                     Before your quest ends, tell us where you're based!
-                </h2><br>
+                </h2>
                 <img src="images/regions.png" alt="Image of regions in Singapore" class="step-image"><br>
                 
                 <div class="area-options">
@@ -342,7 +335,6 @@
                         <div class="option-card">West</div>
                     </label>
             </div>
-            <br>
 
                 <div class="navigation-buttons">
                     <!--<button type="submit" id="saveDataButton" class="btn next-btn" data-target="11">End the Quest!</button>-->
@@ -354,11 +346,15 @@
                 <h2 class="responsive-heading">You've completed <em>The Ultimate Singapore Food Quest</em> and built a meal that's uniquely yours! <br>
                     Your choices help us understand what typical Singaporean love. <br>
                     Thank you for for being part of this journey. Until the next feast!
-                </h2><br>
+                </h2>
+                <br>
+                <p class="responsive-text" style="font-style: italic; text-align: center;">
+                    Based on your taste preference, you are: <span id="personality-desc" style="font-weight: bold;"></span>
+                </p>
                 <br>
             </div>
 
-            </div>
+        </div>
     
     </form>            
     <script src="script.js"></script>

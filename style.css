@@ -54,7 +54,8 @@ body {
     /*height: 550px; 
     
     /* Hides other steps when running the form */
-    overflow: hidden; 
+    /*overflow: hidden; */
+    overflow: visible;
     position: relative; /* For future animations or absolute positioning */
 }
 
@@ -233,6 +234,9 @@ body {
     transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
     user-select: none; /* Prevents text selection on rapid tapping */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    white-space: normal;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 /* 4. Hover Effect (Light up on hover) */
@@ -266,6 +270,47 @@ body {
     background-color: #4a4e69; /* Keep the selected color */
 }
 
+/* --- NEW OPTION CARD STYLING (Updated for responsiveness) --- */
+/*.option-card {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #4a4e69;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
+    user-select: none;
+    box-sizing: border-box;
+    white-space: normal; /* Allow text to wrap */
+    /*overflow: hidden; /* Prevent text from spilling out */
+    /*word-wrap: break-word; /* Ensure long words break and wrap */
+/*}*/
+
+/* New styles for the question indicator */
+#question-indicator {
+    position: absolute;  /* Position it relative to the nearest positioned ancestor */
+    top: 20px;           /* Space from the top */
+    left: 20px;          /* Space from the left */
+    background-color: #4a4e69; /* Matching your button color for consistency */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    z-index: 1000;  /* Ensure it's on top of other elements */
+    border: 2px solid red;  /* Temporary for debugging */
+    //*opacity: 1;*/
+}
+
+#personality-desc {
+    color: #4a4e69;
+    font-size: 1.1em;
+}
+
 /* New Media Queries for Responsiveness */
 @media (max-width: 768px) {
     /* Adjustments for tablets (e.g., iPad) */
@@ -294,12 +339,24 @@ body {
         padding: 8px 16px; /* Smaller buttons */
         font-size: 0.9em;
     }
+
+    .option-card {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+
+    #question-indicator {
+        font-size: 0.9em;
+        padding: 6px 10px;
+        top: 15px;
+        left: 15px;
+    }
 }
 
 @media (max-width: 480px) {
     /* Adjustments for mobile phones */
     .story-container {
-        padding: 10px; /* Even less padding */
+        padding: 20px; /* Even less padding */
     }
     
     .responsive-heading {
@@ -316,7 +373,7 @@ body {
     }
     
     .step-image {
-        max-height: 150px; /* Smaller images for phones */
+        max-height: 200px; /* Smaller images for phones */
     }
     
     .btn {
@@ -324,8 +381,20 @@ body {
         padding: 10px;
         font-size: 1em;
     }
+
+    .option-card {
+        padding: 8px 10px;
+        font-size: 0.8em;
+    }
     
     .navigation-buttons {
         margin-top: 10px; /* Reduce margin */
+    }
+
+    #question-indicator {
+        font-size: 0.8em;
+        padding: 5px 8px;
+        top: 10px;
+        left: 10px;
     }
 }
