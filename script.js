@@ -3,12 +3,17 @@
 // We no longer need FLOW_URL since submission is handled by Web3Forms endpoint in HTML
 //Final Vercel push test (please work)
 const GAS_URL = "https://script.google.com/macros/s/AKfycbzkQawPk1xKIvW77DDsGs6urYJnYCXqFY7SE-qWEWoLfhIvlWpP-hv0JE9dipaZBFgb_g/exec";
-
+                
 // Personality descriptions based on taste preference
-const personalityDescriptions = {
-    "Sweet": "Balanced, comforting, and prioritizes harmony and kindness in all aspects of life.",
-    "Savoury": "Reliable, classic, deeply appreciates the fundamentals, and values time-tested methods.",
-    "Spicy": "Bold, adventurous, and always seeking the next thrilling experience."
+//const personalityDescriptions = {
+//    "Sweet": "Balanced, comforting, and prioritizes harmony and kindness in all aspects of life.",
+//    "Savoury": "Reliable, classic, deeply appreciates the fundamentals, and values time-tested methods.",
+//    "Spicy": "Bold, adventurous, and always seeking the next thrilling experience."
+//};
+const personalityPosters = {
+    "Sweet": "https://i.imgur.com/ZdQEF3a.jpg",
+    "Savoury": "https://i.imgur.com/E7USHNV.jpg",
+    "Spicy": "https://i.imgur.com/3WFAC6J.jpg"
 };
 
 // 1. Storage Variable for all user selections (Still used for validation)
@@ -73,9 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const indicator = document.getElementById('question-indicator');
                 if (indicator) {
                     console.log('Setting indicator for step:', targetStep);
-                    if (targetStep >= '2' && targetStep <= '10') {
-                        const questionNumber = parseInt(targetStep) - 1;  // Step 2 = Q1, Step 3 = Q2, etc.
-                        indicator.textContent = `Q${questionNumber}/10`;  // e.g., Q1/10 for step 2
+                    const stepNum = parseInt(targetStep);
+                    if (targetStep >= 2 && targetStep <= 14) {
+                        const questionNumber = stepNum - 1;
+                        //const questionNumber = parseInt(targetStep) - 1;  // Step 2 = Q1, Step 3 = Q2, etc.
+                        //console.log('questionNumber:', questionNumber);
+                        indicator.textContent = `Q${questionNumber}/14`;  // e.g., Q1/10 for step 2
                         indicator.style.display = 'block';  // Show the indicator
                         console.log('Updated indicator to:', indicator.textContent);
                     } else {
@@ -87,6 +95,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        // Existing green theme toggling (for smaller screens)
+        if (targetStep === '0') {
+            document.body.classList.add('start-bg');
+            document.body.classList.remove('quest-bg');
+        } else {
+            document.body.classList.add('quest-bg');
+            document.body.classList.remove('start-bg');
+        }
+        // NEW: Dynamic background toggling for bigger screens
+        const storyContainer = document.querySelector('.story-container');
+        if (targetStep === '0') {
+            document.body.classList.add('start-bg-big');
+            document.body.classList.remove('quest-bg-big');
+            if (storyContainer) {
+                storyContainer.classList.add('start-container-big');
+                storyContainer.classList.remove('quest-container-big');
+            }
+        } else {
+            document.body.classList.add('quest-bg-big');
+            document.body.classList.remove('start-bg-big');
+            if (storyContainer) {
+                storyContainer.classList.add('quest-container-big');
+                storyContainer.classList.remove('start-container-big');
+            }
+        }
+
+        // Dynamic background toggling for iPad screens
+        if (targetStep === '0') {
+            document.body.classList.add('start-bg-ipad');
+            document.body.classList.remove('quest-bg-ipad');
+            if (storyContainer) {
+                storyContainer.classList.add('start-container-ipad');
+                storyContainer.classList.remove('quest-container-ipad');
+            }
+        } else {
+            document.body.classList.add('quest-bg-ipad');
+            document.body.classList.remove('start-bg-ipad');
+            if (storyContainer) {
+                storyContainer.classList.add('quest-container-ipad');
+                storyContainer.classList.remove('start-container-ipad');
+            }
+        }
     };
 
     // Function to capture the selection from the current step
@@ -281,10 +332,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Form data written successfully to Google Sheets.');
 
                     const tastePreference = userChoices["taste preference"];
-                    const descElement = document.getElementById('personality-desc');
-                    if (descElement) {
-                        descElement.textContent = personalityDescriptions[tastePreference] || "a unique flavor explorer with taste yet to be defined!";
+                    const posterElement = document.getElementById('personality-poster');
+                    if (posterElement) {
+                        const posterUrl = personalityPosters[tastePreference];
+                        if (posterUrl) {
+                            posterElement.src = posterUrl;
+                            posterElement.style.display = 'block';  // Show the image
+                            posterElement.alt = `Personality Poster for ${tastePreference}`;  // Update alt text for accessibility
+                        } else {
+                            // Fallback: Hide or show a default poster if no match
+                            posterElement.style.display = 'none';
+                        }
                     }
+                    //const descElement = document.getElementById('personality-desc');
+                    //if (descElement) {
+                    //    descElement.textContent = personalityDescriptions[tastePreference] || "a unique flavor explorer with taste yet to be defined!";
+                    //}
 
                     // 5. Manually advance to the final thank-you step (data-step="11")
                     const targetStep = submitButton.getAttribute('data-target');

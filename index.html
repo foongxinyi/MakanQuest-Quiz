@@ -8,27 +8,33 @@
 </head>
 <body>
 
+    <div id="question-indicator" class="question-indicator">Test Text</div>
     <form id="makanQuestForm">
     <!--<form id="makanQuestForm" action="https://api.web3forms.com/submit" method="POST">-->
         <!--<input type="hidden" name="access_key" value="e2f142ed-4181-47ad-8e1c-aaee4ae2b8c1">-->
         
+        <!--<div id="question-indicator" class="question-indicator">Test Text</div>-->
         <div class="story-container">
-            <div id="question-indicator" class="question-indicator">Test Text</div>
+            <!--<div id="question-indicator" class="question-indicator">Test Text</div>-->
 
             <div class="story-step start-screen active" data-step="0">
                 <div class="start-content">
-                    <h1 class="responsive-heading">The Makan Quest</h1>
-                    <p class="tagline responsive-text">Build your perfect hawker meal combination!</p>
-                    <p class="tagline responsive-text">Embark on this food quest to get started!</p>
+                    <h1 class="responsive-heading">The Singapore Hawker Persona</h1>
+                    <p class="tagline responsive-text">Build your feast, discover your flavour persona.</p>
+                    <p class="tagline responsive-text">Embark on this journey to get started!</p>
                     <img src="images/start.png" alt="Image of start screen" class="step-image"><br>
 
                     <button class="btn next-btn" data-target="1">Start</button>
                 </div>
             </div>
 
+
             <div class="story-step question-page" data-step="1">
-                <h2 class="responsive-heading">It's a bustling Friday evening in Singapore. You and your friends have just finished your CCA, and everyone's stomach is growling.
-                    The mission? Create YOUR perfect meal combination.
+                <h2 class="responsive-heading">You and your friends are planning the ultimate day out. Whether it's screaming on rollercoasters, cracking
+                    escape room codes, or chilling at the movies. One thing's for sure: by the end of the day, everyone's stomach will be growling. <br>
+                    The mission? Build YOUR ideal hawker feast and discover your flavour personality.
+                    <!--It's a bustling Friday evening in Singapore. You and your friends have just finished your CCA, and everyone's stomach is growling.
+                    The mission? Create YOUR perfect meal combination.-->
                 </h2>
 
                 <img src="images/hawker.jpg" alt="Bustling hawker centre" class="step-image"><br>
@@ -38,24 +44,23 @@
                 </div>
             </div>
 
+
             <div class="story-step question-page" data-step="2">
-                <h2 class="responsive-heading">Before we start... we need a few of your basic profile information in order to study patterns.<br>
-                    What is your gender?
-                </h2>
-                <img src="images/gender.png" alt="Image of genders" class="step-image">
-                
-                <div class="gender-options option-group">
+                <h2 class="responsive-heading">Let's kick off the long awaited day! Which activity best describes your ideal day out?</h2>
+                <!--image-->
+
+                <div class="activity-options option-group">
                     <label class="radio-label">
-                        <input type="radio" name="gender" value="Male">
-                        <div class = "option-card">Male</div>
+                        <input type="radio" name="activity" value="A Day at USS">
+                        <div class = "option-card">A Day at USS</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="gender" value="Female">
-                        <div class = "option-card">Female</div>
+                        <input type="radio" name="activity" value="Escape Room Challenge">
+                        <div class = "option-card">Escape Room Challenge</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="gender" value="Other">
-                        <div class = "option-card">Other</div>
+                        <input type="radio" name="activity" value="Movie Date">
+                        <div class = "option-card">Movie Date</div>
                     </label>
             </div>
 
@@ -64,39 +69,28 @@
                 </div>
             </div>
 
+
             <div class="story-step question-page" data-step="3">
-                <h2 class="responsive-heading">And...<br>
-                Your age?</h2>
-                <img src="images/age.jpg" alt="Bustling hawker centre" class="step-image">
-                
-                <div class="age-options option-group column-group">
+                <h2 class="responsive-heading">After hours of fun, your stomach starts grumbling. Time to makan! 
+                    You now have the power to teleport to your favourite hawker centre. Where would you choose to feast?
+                </h2>
+
+                <div class="hawker-options option-group">
                     <label class="radio-label">
-                        <input type="radio" name="age" value="Under 15"> 
-                        <div class="option-card">Under 15</div>
+                        <input type="radio" name="hawker" value="Lau Pa Sat">
+                        <div class="option-card">Lau Pa Sat</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="age" value="15 - 17"> 
-                        <div class="option-card">15 - 17</div>
+                        <input type="radio" name="hawker" value="Satay by the Bay">
+                        <div class="option-card">Satay by the Bay</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="age" value="18 - 24">
-                        <div class="option-card">18 - 24</div>
+                        <input type="radio" name="hawker" value="Maxwell Food Centre">
+                        <div class="option-card">Maxwell Food Centre</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="age" value="25 - 34">
-                        <div class="option-card">25 - 34</div>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="age" value="35 - 44">
-                        <div class="option-card">35 - 44</div>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="age" value="45 - 54">
-                        <div class="option-card">45 - 54</div>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="age" value="55 and above">
-                        <div class="option-card">55 and above</div>
+                        <input type="radio" name="hawker" value="Tampines Round Market & Food Centre">
+                        <div class="option-card">Tampines Round Market & Food Centre</div>
                     </label>
             </div>
 
@@ -105,37 +99,41 @@
                 </div>
             </div>
 
+
             <div class="story-step question-page" data-step="4">
-                <h2 class="responsive-heading">The Makan Quest begins!<br>
+                <h2 class="responsive-heading">Your teleportation lands you infront of the hawker stall with the longest queue, a dream right?
+                    First up: your main dish. What is the star of your feast?
+                <!--The Makan Quest begins!<br>
+                The first step: Pick your main dish
                 Imagine yourself at the heart of a hawker centre, where you take the first step to build your perfect meal combination:
-                Pick your main dish.
+                Pick your main dish.-->
                 </h2>
                 <img src="images/main dish.png" alt="Image of main dishes" class="step-image"><br>
 
                 <div class="mains-options option-group column-group">
                     <label class="radio-label">
-                        <input type="radio" name="mains" value="Chicken Rice">
+                        <input type="radio" name="mains" value="Chicken Rice"><!--classic/mid-->
                         <div class="option-card">Chicken Rice</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="mains" value="Nasi Lemak">
+                        <input type="radio" name="mains" value="Nasi Lemak"><!--staple/budget-->
                         <div class="option-card">Nasi Lemak</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="mains" value="Char Kway Teow">
-                        <div class="option-card">Char Kway Teow</div>
+                        <input type="radio" name="mains" value="Chilli Crab"><!--luxury-->
+                        <div class="option-card">Chilli Crab</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="mains" value="Laksa">
+                        <input type="radio" name="mains" value="Laksa"><!--spicy noodle/mid-->
                         <div class="option-card">Laksa</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="mains" value="Mee Rebus">
-                        <div class="option-card">Mee Rebus</div>
+                        <input type="radio" name="mains" value="Claypot Lobster with Vermicilli"><!--unique/high-->
+                        <div class="option-card">Claypot Lobster with Vermicilli</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="mains" value="Hokkien Mee">
-                        <div class="option-card">Hokkien Mee</div>
+                        <input type="radio" name="mains" value="Cai Fan (Mixed Rice)"><!--budget/variety-->
+                        <div class="option-card">Cai Fan (Mixed Rice)</div>
                     </label>
             </div>
 
@@ -145,8 +143,10 @@
             </div>
 
             <div class="story-step question-page" data-step="5">
-                <h2 class="responsive-heading">Of course, you can't just have the main dish,  too basic right?<br>
-                Choose two side dishes to pair with your main dish!
+                <h2 class="responsive-heading">Your tray's looking lonely with just one dish. Time to zhng it up.
+                    Pick two side dishes.
+                <!--Of course, you can't just have the main dish,  too basic right?<br>
+                Choose two side dishes to pair with your main dish!-->
                 </h2>
                 <img src="images/side dish.png" alt="Image of side dishes" class="step-image"><br>
                 
@@ -187,7 +187,7 @@
             </div>
 
             <div class="story-step question-page" data-step="6">
-                <h2 class="responsive-heading">Then... you walk pass the soup stall. The broth is bubbling, the aroma is rich
+                <h2 class="responsive-heading">Then... you walk past the soup stall. The broth is bubbling, the aroma is rich
                     and suddenly, you are craving something you didn't know you wanted. <br>
                     Go ahead, pick your soup.
                 </h2>
@@ -195,19 +195,19 @@
                 
                 <div class="soup-options option-group column-group">
                     <label class="radio-label">
-                        <input type="radio" name="soup" value="Bak Kut Teh">
+                        <input type="radio" name="soup" value="Bak Kut Teh"><!--herbal/pork-->
                         <div class="option-card">Bak Kut Teh</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="soup" value="Tom Yum Soup">
-                        <div class="option-card">Tom Yum Soup</div>
+                        <input type="radio" name="soup" value="Tom Yum Soup"><!--spicy/sour-->
+                        <div class="option-card">Tom Yum Soup</div><!--can prob analyse that this is rarely ordered with sweet desserts-->
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="soup" value="Fish Soup">
+                        <input type="radio" name="soup" value="Fish Soup"><!--light/umami-->
                         <div class="option-card">Fish Soup</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="soup" value="Lotus Root Soup">
+                        <input type="radio" name="soup" value="Lotus Root Soup"><!--home/nourishing-->
                         <div class="option-card">Lotus Root Soup</div>
                     </label>
             </div>
@@ -218,8 +218,10 @@
             </div>
 
             <div class="story-step question-page" data-step="7">
-                <h2 class="responsive-heading">You're halfway through the journey! Time to refuel. <br>
-                    Pick a drink to power through the last stretch.
+                <h2 class="responsive-heading">You're starting to feel thirsty from the heat. Whether you're craving something sweet, 
+                    refreshing, or just hydrating, it's time to pick your drink.
+                    <!--You're halfway through the journey! Time to refuel. <br>
+                    Pick a drink to power through the last stretch.-->
                 </h2>
                 <img src="images/beverages.png" alt="Image of beverages" class="step-image"><br>
                 
@@ -241,8 +243,8 @@
                         <div class="option-card">Milo Dinosaur</div>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="beverage" value="Bandung">
-                        <div class="option-card">Bandung</div>
+                        <input type="radio" name="beverage" value="Lime Juice"><!--sour centerpoint-->
+                        <div class="option-card">Lime Juice</div><!--can get better pairing data against v sweet items like milo dino-->
                     </label>
             </div>
 
@@ -252,8 +254,10 @@
             </div>
 
             <div class="story-step question-page" data-step="8">
-                <h2 class="responsive-heading">The food quest is nearly complete. Afterall, what's a meal without dessert to finish it off?
-                    End off your food quest with a dessert that hits the spot!
+                <h2 class="responsive-heading">You're almost done devouring your feast. But, what's a meal without dessert to finish it off?
+                    Pick your final bite.
+                    <!--The food quest is nearly complete. Afterall, what's a meal without dessert to finish it off?
+                    End off your food quest with a dessert that hits the spot!-->
                 </h2>
                 <img src="images/desserts.png" alt="Image of desserts" class="step-image"><br>
                 
@@ -285,8 +289,152 @@
                 </div>
             </div>
 
+
             <div class="story-step question-page" data-step="9">
-                <h2 class="responsive-heading">You've built your perfect hawker combination. Now, let's find out what kind of taste truly speak to you.<br>
+                <h2 class="responsive-heading"> Your feast is complete. <br> You absolutely devoured all the dishes, your taste buds are satisfied,
+                    and your hawker journey is almost complete. Now, let's find out your flavour personality. Just a few more questions to complete your profile!
+                </h2>
+
+                <img src="images/hawker.jpg" alt="Bustling hawker centre" class="step-image"><br>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="10">Continue</button>
+                </div>
+            </div>
+
+
+            <div class="story-step question-page" data-step="10">
+                <h2 class="responsive-heading">First up, tell us a bit about yourself. What's your gender?
+                    <!--Before we start... we need a few of your basic profile information in order to study patterns.<br>
+                    What is your gender?-->
+                </h2>
+                <img src="images/gender.png" alt="Image of genders" class="step-image">
+                
+                <div class="gender-options option-group">
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="Male">
+                        <div class = "option-card">Male</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="Female">
+                        <div class = "option-card">Female</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="Other">
+                        <div class = "option-card">Other</div>
+                    </label>
+            </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="11">Next</button>
+                </div>
+            </div>
+
+
+            <div class="story-step question-page" data-step="11">
+                <h2 class="responsive-heading">Age is just a number, but it helps us understand your makan style. 
+                    How young at heart are you?
+                    <!--And...<br>Your age?-->
+                </h2>
+                <img src="images/age.jpg" alt="Bustling hawker centre" class="step-image">
+                
+                <div class="age-options option-group column-group">
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="Under 15"> 
+                        <div class="option-card">Under 15</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="15 - 17"> 
+                        <div class="option-card">15 - 17</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="18 - 24">
+                        <div class="option-card">18 - 24</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="25 - 34">
+                        <div class="option-card">25 - 34</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="35 - 44">
+                        <div class="option-card">35 - 44</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="45 - 54">
+                        <div class="option-card">45 - 54</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="age" value="55 and above">
+                        <div class="option-card">55 and above</div>
+                    </label>
+            </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="12">Next</button>
+                </div>
+            </div>
+
+
+            <div class="story-step question-page" data-step="12">
+                <h2 class="responsive-heading">Singapore's hawker culture is a mix of many traditions, just like the people who enjoy it.
+                    What's your ethnic background?
+                </h2>
+                <img src="images/taste preference.png" alt="Image of taste profile" class="step-image"><br>
+                
+                <div class="ethnicity-options option-group">
+                    <label class="radio-label">
+                        <input type="radio" name="ethnicity" value="Chinese">
+                        <div class="option-card">Chinese</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="ethnicity" value="Malay">
+                        <div class="option-card">Malay</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="ethnicity" value="Indian">
+                        <div class="option-card">Indian</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="ethnicity" value="Others">
+                        <div class="option-card">Others</div>
+                    </label>
+            </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="13">Next</button>
+                </div>
+            </div>
+
+
+            <div class="story-step question-page" data-step="13">
+                <h2 class="responsive-heading">Some people recharge with crowds, others with quiet kopi breaks. How would you describe your social energy style?
+                    <!--Now let's get into your vibe. How would you describe your personality?-->
+                </h2>
+                <img src="images/taste preference.png" alt="Image of taste profile" class="step-image"><br>
+                
+                <div class="energy-options option-group">
+                    <label class="radio-label">
+                        <input type="radio" name="energy" value="Introvert">
+                        <div class="option-card">Introvert</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="energy" value="Extrovert">
+                        <div class="option-card">Extrovert</div>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="energy" value="Ambivert">
+                        <div class="option-card">Ambivert</div>
+                    </label>
+            </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn next-btn" data-target="14">Next</button>
+                </div>
+            </div>
+
+
+            <div class="story-step question-page" data-step="14">
+                <h2 class="responsive-heading">You've built your perfect hawker combination. Now, let's find out what kind of taste truly speaks to you.<br>
                     Pick the flavour that you resonate with the most.
                 </h2>
                 <img src="images/taste preference.png" alt="Image of taste profile" class="step-image"><br>
@@ -307,17 +455,17 @@
             </div>
 
                 <div class="navigation-buttons">
-                    <button class="btn next-btn" data-target="10">Next</button>
+                    <button class="btn next-btn" data-target="15">Next</button>
                 </div>
             </div>
 
-            <div class="story-step question-page" data-step="10">
-                <h2 class="responsive-heading">From the north to the east, every corner of Singapore has its own cravings.<br>
+            <div class="story-step question-page" data-step="15">
+                <h2 class="responsive-heading">Last one! From the north to the east, every corner of Singapore has its own cravings.<br>
                     Before your quest ends, tell us where you're based!
                 </h2>
                 <img src="images/regions.png" alt="Image of regions in Singapore" class="step-image"><br>
                 
-                <div class="area-options">
+                <div class="area-options option-group">
                     <label class="radio-label">
                         <input type="radio" name="area" value="North">
                         <div class="option-card">North</div>
@@ -335,22 +483,25 @@
                         <div class="option-card">West</div>
                     </label>
             </div>
+            <br>
 
                 <div class="navigation-buttons">
                     <!--<button type="submit" id="saveDataButton" class="btn next-btn" data-target="11">End the Quest!</button>-->
-                    <button type="button" id="submitQuestBtn" class="btn next-btn" data-target="11">End the Quest!</button>
+                    <button type="button" id="submitQuestBtn" class="btn next-btn" data-target="16">End the Quest!</button>
                 </div>
             </div>
 
-            <div class="story-step question-page" data-step="11">
-                <h2 class="responsive-heading">You've completed <em>The Ultimate Singapore Food Quest</em> and built a meal that's uniquely yours! <br>
+            <div class="story-step question-page" data-step="16">
+                <h2 class="responsive-heading">Your hawker journey is complete. Meet your hawker alter ego, the flavour personality that best matches
+                    your makan style. <!--alter ego is kind of like hawker persona, like a second identity-->
+                    <!--You've completed <em>The Ultimate Singapore Food Quest</em> and built a meal that's uniquely yours! <br>
                     Your choices help us understand what typical Singaporean love. <br>
-                    Thank you for for being part of this journey. Until the next feast!
+                    Thank you for for being part of this journey. Until the next feast!-->
                 </h2>
-                <br>
-                <p class="responsive-text" style="font-style: italic; text-align: center;">
+                <img id="personality-poster" src="" alt="Your Personality Poster">
+                <!--<p class="responsive-text" style="font-style: italic; text-align: center;">
                     Based on your taste preference, you are: <span id="personality-desc" style="font-weight: bold;"></span>
-                </p>
+                </p>-->
                 <br>
             </div>
 

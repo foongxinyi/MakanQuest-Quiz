@@ -10,13 +10,46 @@ html, body {
 
 body {
     font-family: sans-serif;
-    background-color: #f4f7f6; /* Plain background color */
+    background: #fcbd66;
+    /*background: linear-gradient(to right, #D7F4D2, #A7E99C, #77DD66);
+    /*background-color: #f4f7f6; /* Plain background color */
     
     /* Flexbox setup to center the .story-container card in the middle of the screen */
     display: flex;
     justify-content: center; /* Horizontal centering */
     align-items: center; /* Vertical centering */
     min-height: 100vh; /* Ensures body is at least screen height */
+}
+
+body.start-bg {
+    background: #fcbd66; /* Solid color for start page body */
+}
+
+/* Quest pages body: Gradient */
+body.quest-bg {
+    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+}
+
+/* Start page container: Gradient */
+.start-screen .story-container.start-container {
+    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+}
+
+/* Quest pages container: Gradient (overrides the default gradient) */
+.story-container.quest-container {
+    background: none;
+}
+
+/*body.start-bg {
+    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+}
+
+body.quest-bg {
+    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+}
+
+.start-screen .story-container {
+    background: none;
 }
 
 /* style.css (Add this at the end of your file) */
@@ -44,9 +77,10 @@ body {
     width: 100%;
     max-width: 650px; /* Max width for desktop */
     
-    background-color: white; 
+    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    /*background-color: white; */
     padding: 40px; /* Padding inside the card */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
     
     height: 100vh;
     box-sizing: border-box;
@@ -121,7 +155,7 @@ body {
 
 .start-screen h1 {
     font-size: 2.8em;
-    color: #4a4e69;
+    color: #2f313c;
     border-bottom: none; /* Remove any inherited border */
     margin-bottom: 10px;
     font-family: 'Changa', sans-serif;
@@ -131,7 +165,7 @@ body {
 .start-screen .tagline {
     font-size: 1.2em;
     font-style: italic;
-    color: #4a4e69;
+    color: #2f313c;
     margin-bottom: 30px;
 }
 
@@ -292,28 +326,140 @@ body {
 
 /* New styles for the question indicator */
 #question-indicator {
-    position: absolute;  /* Position it relative to the nearest positioned ancestor */
-    top: 20px;           /* Space from the top */
-    left: 20px;          /* Space from the left */
-    background-color: #4a4e69; /* Matching your button color for consistency */
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 1em;
+    font-family: 'Changa', sans-serif;
+    position: fixed;  /* Position it relative to the nearest positioned ancestor */
+    top: 6px;           /* Space from the top */
+    left: 12px;          /* Space from the left */
+    /*background-color: #4a4e69; /* Matching your button color for consistency */
+    color: #4a4e69;
+    /*padding: 8px 12px;*/
+    /*border-radius: 5px;*/
+    font-size: 1.2rem;
     font-weight: bold;
-    z-index: 1000;  /* Ensure it's on top of other elements */
-    border: 2px solid red;  /* Temporary for debugging */
-    //*opacity: 1;*/
+    z-index: 999999 !important;  /* Ensure it's on top of other elements */
+    display: none;
+    opacity: 1;
 }
 
-#personality-desc {
-    color: #4a4e69;
-    font-size: 1.1em;
+#personality-poster {
+    display: none;
+    max-width: 150%; /* Ensures it scales responsively on smaller screens */
+    max-height: 70vh; /* Caps height to 50% of viewport to prevent scrolling */
+    height: auto; /* Maintains aspect ratio */
+    width: auto;
+    object-fit: contain;
+    /*border-radius: 8px; /* Rounded corners for a modern look */
+    margin: 20px auto; /* Centers the image and adds vertical spacing */
+    /* Optional: Smooth fade-in when shown */
+    /*transition: opacity 0.5s ease-in-out;*/
+    opacity: 0;
+}
+/* When the image is shown (via JS setting display: block), fade it in */
+#personality-poster[style*="display: block"] {
+    opacity: 1;
+}
+
+/* iPads and similar tablets in portrait (taller, square-like format) */
+@media (max-width: 1024px) and (min-width: 769px) and (orientation: portrait) {
+    .story-container {
+        padding: 40px; /* More padding for spacing */
+    }
+    
+    .responsive-heading {
+        font-size: 2.2em; /* Large headings */
+    }
+    
+    .responsive-text {
+        font-size: 2em; /* Large text */
+    }
+
+    .start-screen h1 {
+        font-size: 3em;
+    }
+
+    .start-screen .tagline {
+        font-size: 1.4em;
+    }
+    
+    .option-group, .column-group {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Wider columns */
+        gap: 12px;
+    }
+    
+    .step-image {
+        max-height: 350px; /* Large images */
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.2em;
+    }
+    
+    .option-card {
+        padding: 13px 15px;
+        font-size: 1.1em;
+    }
+
+    #question-indicator {
+        font-size: 1.4em;
+        top: 13px;
+        left: 18px;
+    }
+    
+    #personality-poster {
+        max-height: 65vh; /* Large poster */
+        margin: 22px auto;
+    }
+}
+
+/* Google Nest Hub and similar landscape/rectangular devices (wide and short) */
+@media (max-width: 1024px) and (min-width: 769px) and (orientation: landscape) and (max-height: 700px) {
+    .story-container {
+        padding: 20px; /* Less padding to save space */
+    }
+    
+    .responsive-heading {
+        font-size: 1.3em; /* Slightly smaller than portrait for compact fit */
+    }
+    
+    .responsive-text {
+        font-size: 0.4em; /* Adjusted text size */
+    }
+    
+    .option-group, .column-group {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Fewer/wider columns for horizontal space */
+        gap: 10px;
+    }
+
+    .step-image {
+        max-height: 200px; /* Smaller images to fit short height */
+    }
+    
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.9em;
+    }
+    
+    .option-card {
+        padding: 9px 13px;
+        font-size: 0.9em;
+    }
+    
+    #question-indicator {
+        font-size: 1.4em;
+        top: 14px;
+        left: 16px;
+    }
+    
+    #personality-poster {
+        max-height: 50vh; /* Smaller poster to prevent overflow on short screens */
+        margin: 18px auto;
+    }
 }
 
 /* New Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    /* Adjustments for tablets (e.g., iPad) */
+    /* Adjustments for tablets (e.g., iPad Mini) */
     .story-container {
         padding: 20px; /* Reduce padding for smaller screens */
     }
@@ -346,17 +492,75 @@ body {
     }
 
     #question-indicator {
+        font-size: 1.3em;
+        top: 10px;
+        left: 17px;
+    }
+
+    #personality-poster {
+        /*max-width: 90%;*/
+        max-height: 50vh;
+        margin: 18px auto;
+    }
+}
+
+/*For surface duo*/
+@media (max-width: 600px) {
+    .story-container {
+        padding: 30px; /* Slightly less padding than tablets */
+    }
+    
+    .responsive-heading {
+        font-size: 1.4em; /* Between tablet and mobile sizes */
+    }
+    
+    .responsive-text {
+        font-size: 0.95em;
+    }
+
+    .start-screen h1 {
+        font-size: 2.4em;
+    }
+
+    .start-screen .tagline {
+        font-size: 1em;
+    }
+    
+    .option-group, .column-group {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Adjust for mid-size screens */
+        gap: 7px;
+    }
+    
+    .step-image {
+        max-height: 220px; /* Slightly larger than mobile */
+    }
+
+    .btn {
+        padding: 10px 30px;
         font-size: 0.9em;
-        padding: 6px 10px;
-        top: 15px;
-        left: 15px;
+    }
+
+    .option-card {
+        padding: 8px 10px;
+        font-size: 0.8em;
+    }
+
+    #question-indicator {
+        font-size: 1em;
+        top: 8px;
+        left: 12px;
+    }
+    
+    #personality-poster {
+        max-height: 50vh; /* Larger than mobile for better visibility */
+        margin: 16px auto;
     }
 }
 
 @media (max-width: 480px) {
     /* Adjustments for mobile phones */
     .story-container {
-        padding: 20px; /* Even less padding */
+        padding: 25px; /* Even less padding */
     }
     
     .responsive-heading {
@@ -373,18 +577,17 @@ body {
     }
     
     .step-image {
-        max-height: 200px; /* Smaller images for phones */
+        max-height: 230px; /* Smaller images for phones */
     }
-    
+
     .btn {
-        width: 100%; /* Full-width buttons for easy tapping */
-        padding: 10px;
-        font-size: 1em;
+        padding: 9px 30px;
+        font-size: 0.9em;
     }
 
     .option-card {
         padding: 8px 10px;
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
     
     .navigation-buttons {
@@ -392,9 +595,111 @@ body {
     }
 
     #question-indicator {
-        font-size: 0.8em;
-        padding: 5px 8px;
-        top: 10px;
+        font-size: 1em;
+        top: 5px;
         left: 10px;
+    }
+
+    #personality-poster {
+        max-height: 50vh;
+        margin: 15px auto;
+
+    }
+}
+
+/* Ultra-small phones (e.g., iPhone SE at 375x667) */
+@media (max-width: 400px) {
+    .story-container {
+        padding: 23px; /* Tighter padding to maximize space */
+    }
+    
+    .responsive-heading {
+        font-size: 1.2em; /* Smaller headings for compact fit */
+    }
+
+    .start-screen h1 {
+        font-size: 2.3em;
+    }
+
+    .start-screen .tagline {
+        font-size: 1em;
+    }
+    
+    .responsive-text {
+        font-size: 0.8em; /* Smaller text to avoid wrapping */
+    }
+    
+    .option-group, .column-group {
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Even narrower columns */
+        gap: 5px; /* Tighter gaps */
+    }
+    
+    .step-image {
+        max-height: 180px; /* Smaller images for better fit */
+    }
+    
+    .btn {
+        padding: 7px 14px; /* Smaller buttons for easier tapping */
+        font-size: 0.7em;
+    }
+    
+    .option-card {
+        padding: 6px 8px; /* Compact cards */
+        font-size: 0.75em; /* Smaller font for cards */
+    }
+
+    .navigation-buttons {
+        margin-top: 8px; /* Less margin */
+    }
+    
+    #question-indicator {
+        font-size: 0.8em; /* Smaller indicator */
+        top: 6px;
+        left: 9px;
+    }
+    
+    #personality-poster {
+        max-height: 35vh; /* Smaller poster to fit tiny screens */
+        margin: 12px auto;
+    }
+}
+
+/* Dynamic backgrounds for bigger screens (desktops/laptops) */
+@media (min-width: 1025px) {
+    /* Start page body: Solid color */
+    body.start-bg-big {
+        background: #fcbd66; /* Solid color for start page body */
+    }
+    /* Quest pages body: Gradient */
+    body.quest-bg-big {
+        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    }
+    /* Start page container: Gradient */
+    .start-screen .story-container.start-container-big {
+        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    }
+    /* Quest pages container: Gradient (overrides the default gradient) */
+    .story-container.quest-container-big {
+        background: none;
+    }
+}
+
+/* Dynamic backgrounds for iPad screens (768px-1024px wide) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    /* Start page body: Solid color */
+    body.start-bg-ipad {
+        background: #fcbd66; /* Solid color for start page body */
+    }
+    /* Quest pages body: Gradient */
+    body.quest-bg-ipad {
+        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    }
+    /* Start page container: Gradient */
+    .start-screen .story-container.start-container-ipad {
+        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    }
+    /* Quest pages container: No background (transparent, so body's gradient shows through) */
+    .story-container.quest-container-ipad {
+        background: none;
     }
 }
