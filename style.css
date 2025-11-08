@@ -3,14 +3,19 @@
 
 /* 1. Base Styles: Set the background and enable centering */
 html, body {
-    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    /*width: 100vw;*/
+    /*margin: 0;
     padding: 0;
     height: 100%; /* Required for 100vh to work correctly */
 }
 
 body {
     font-family: sans-serif;
-    background: #fcbd66;
+    background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8) ;
+    /*background: #a8c2ee;
+    /*background: #fcbd66;
     /*background: linear-gradient(to right, #D7F4D2, #A7E99C, #77DD66);
     /*background-color: #f4f7f6; /* Plain background color */
     
@@ -22,17 +27,21 @@ body {
 }
 
 body.start-bg {
-    background: #fcbd66; /* Solid color for start page body */
+    background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8);
+    /*background: #a8c2ee; /* Solid color for start page body */
 }
 
 /* Quest pages body: Gradient */
 body.quest-bg {
-    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8) ;
+    /*background: linear-gradient(to bottom right, #a8c2ee, #d5e5ff, #a8c2ee);*/
 }
 
 /* Start page container: Gradient */
 .start-screen .story-container.start-container {
-    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    background: none;
+    /*background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8) ;
+    /*background: linear-gradient(to bottom right, #a8c2ee, #d5e5ff, #a8c2ee);*/
 }
 
 /* Quest pages container: Gradient (overrides the default gradient) */
@@ -77,7 +86,10 @@ body.quest-bg {
     width: 100%;
     max-width: 650px; /* Max width for desktop */
     
-    background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+    background: none;
+    /*background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8) ;
+    /*background: linear-gradient(to bottom right, #a8c2ee, #d5e5ff, #a8c2ee);
+    /*background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
     /*background-color: white; */
     padding: 40px; /* Padding inside the card */
     /*box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
@@ -109,6 +121,8 @@ body.quest-bg {
     font-family: 'Changa', sans-serif;
     color: #4a4e69;
     line-height: 1.5;
+    text-align: justify;
+    /*text-align: center;
     /*margin-bottom: -10px;*/
 }
 
@@ -171,11 +185,19 @@ body.quest-bg {
 
 .radio-label{
     color: #4a4e69;
+    margin-bottom: 15px;
+}
+
+.checkbox-label{
+    display: block;
+    margin-bottom: 15px;
 }
 
 /* --- Button Styling (Add to style.css if not present) --- */
 .btn {
     padding: 10px 20px;
+    width: 400px; /* Fixed width in pixels */
+    height: 33px; 
     border: none;
     border-radius: 5px;
     font-weight: bold;
@@ -185,7 +207,7 @@ body.quest-bg {
 
 .next-btn {
     background-color: #4a4e69;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .next-btn:hover {
@@ -194,18 +216,23 @@ body.quest-bg {
 }
 
 .navigation-buttons {
-    margin-top: auto;
+    margin-top: 0px;
     width: 100%;
 
+    /* Put buttons in the middle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*flex-shrink: 0;*/
 }
 
 .step-image {
     /* Ensure the image scales down, never exceeding its parent's width */
-    max-width: 100%; 
+    max-width: 50%; 
     
     /* Ensure the image never exceeds a certain height inside the card */
     /* This prevents long images from pushing the button off the page */
-    max-height: 270px; /* Adjust this value as needed */
+    max-height: 130px; /* Adjust this value as needed */
     
     /* Good practice: make the corners slightly rounded */
     border-radius: 5px;
@@ -232,18 +259,21 @@ body.quest-bg {
 .option-group {
     display: grid;
     /* Default to 3 columns, making them look like nice selection cards */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
-    gap: 10px;
+    /*grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); */
+    grid-template-columns: 1fr;
+    /*gap: 2px;*/
     margin-bottom: 20px;
+    gap: 10px;
+    width: 100%;
 }
 
 /* Layout for groups that need more vertical space (like Age, Soup, Beverages) */
-.column-group {
+/*.column-group {
     /* Set to 2 columns on small/medium screens */
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     /* Allow them to flow vertically better */
-    gap: 12px 15px; 
-}
+    /*gap: 12px 15px; 
+}*/
 
 /* Layout for the Mains question (step 4) to allow for longer names */
 .large-group {
@@ -254,17 +284,22 @@ body.quest-bg {
 /* 3. Style the Option Card (the visual button) */
 .option-card {
     display: block;
-    width: 100%;
-    padding: 12px 15px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 11px 15px; /*vertical, horizontal*/
     text-align: center;
     
-    background-color: #ffffff; /* White background */
-    color: #4a4e69; /* Text color */
+    background-color: #171c41; /* White background */
+    color: #ffffff; /* Text color */
     border: 2px solid #e0e0e0; /* Subtle border */
     border-radius: 8px;
     
     cursor: pointer;
-    font-weight: 600;
+    /*font-weight: 600;*/
+    /*font-family: 'Inter', sans-serif;*/
+    font-size: 0.85em;
+    font-weight: 400;
+
     transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
     user-select: none; /* Prevents text selection on rapid tapping */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -275,8 +310,8 @@ body.quest-bg {
 
 /* 4. Hover Effect (Light up on hover) */
 .option-card:hover {
-    background-color: #f7f7f7; /* Slightly lighter background */
-    border-color: #b0b3c3; /* Border light up */
+    background-color: #4d85ad; /* Slightly lighter background */
+    border-color: #4d85ad; /* Border light up */
     box-shadow: 0 0 8px rgba(74, 78, 105, 0.2); /* Soft shadow for "light up" */
 }
 
@@ -284,24 +319,24 @@ body.quest-bg {
 
 /* Radio Buttons (Single Choice) */
 .radio-label input[type="radio"]:checked + .option-card {
-    background-color: #4a4e69; /* Darkened background */
+    background-color: #4d85ad; /* Darkened background */
     color: white; /* White text */
-    border-color: #4a4e69;
+    border-color: #4d85ad;
     box-shadow: 0 0 10px rgba(74, 78, 105, 0.4); /* Stronger shadow to pop */
 }
 
 /* Checkboxes (Multiple Choice - Step 5) */
 .checkbox-label input[type="checkbox"]:checked + .option-card {
-    background-color: #4a4e69; /* Darkened background */
+    background-color: #4d85ad; /* Darkened background */
     color: white; /* White text */
-    border-color: #4a4e69;
+    border-color: #4d85ad;
     box-shadow: 0 0 10px rgba(74, 78, 105, 0.4);
 }
 
 /* Reset hover for checked item */
 .radio-label input[type="radio"]:checked + .option-card:hover,
 .checkbox-label input[type="checkbox"]:checked + .option-card:hover {
-    background-color: #4a4e69; /* Keep the selected color */
+    background-color: #4d85ad; /* Keep the selected color */
 }
 
 /* --- NEW OPTION CARD STYLING (Updated for responsiveness) --- */
@@ -359,7 +394,41 @@ body.quest-bg {
     opacity: 1;
 }
 
-/* iPads and similar tablets in portrait (taller, square-like format) */
+/* --- NEW STYLING: Next Button as a Discreet Link --- */
+
+/* 1. Reset the Button Appearance */
+.question-page .next-link {
+    /* Remove physical button appearance */
+    border: none;
+    background: none;
+    box-shadow: none;
+    
+    /* Remove the fixed size */
+    width: auto; /* Allow the button to shrink to the size of its text */
+    height: auto;
+    padding: 0; /* Remove padding */
+    margin: 20px 0 10px 0; /* Add space above and below */
+    
+    /* Set text style */
+    color: #4a4e69; /* Use your primary text color */
+    font-size: 1em;
+    /*font-weight: 700;*/
+    /*text-decoration: underline; /* Add the underline */
+    cursor: pointer;
+    
+    /* Ensure no visual transformation/transition from the original .btn class remains */
+    transition: none;
+}
+
+/* 2. Style the Hover/Active State */
+.question-page .next-link:hover {
+    /*color: #00ADB5; /* Use a brighter hover color (e.g., the teal from before) */
+    text-decoration: none; /* Optional: Remove underline on hover for a modern effect */
+    transform: none; /* Prevent the unwanted translateY(-1px) inherited from .next-btn */
+    text-decoration: underline; /* Add the underline */
+}
+
+/* iPads and similar tablets in portrait (taller, square-like format) ipad air, ipad pro, surface pro 7*/
 @media (max-width: 1024px) and (min-width: 769px) and (orientation: portrait) {
     .story-container {
         padding: 40px; /* More padding for spacing */
@@ -382,17 +451,28 @@ body.quest-bg {
     }
     
     .option-group, .column-group {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Wider columns */
-        gap: 12px;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 40px;
     }
     
     .step-image {
-        max-height: 350px; /* Large images */
+        max-height: 500px; /* Large images */
     }
 
     .btn {
         padding: 12px 25px;
         font-size: 1.2em;
+        height: 45px;
+        border-radius: 7px;
+    }
+
+    .option-group {
+        margin-bottom: 0px; /* Remove bottom margin from options, like in 480px */
+    }
+    
+    .navigation-buttons {
+        margin-top: 10px; /* Add 10px top margin to pull the button up, like in 480px */
     }
     
     .option-card {
@@ -419,7 +499,7 @@ body.quest-bg {
     }
     
     .responsive-heading {
-        font-size: 1.3em; /* Slightly smaller than portrait for compact fit */
+        font-size: 1.1em; /* Slightly smaller than portrait for compact fit */
     }
     
     .responsive-text {
@@ -427,17 +507,26 @@ body.quest-bg {
     }
     
     .option-group, .column-group {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Fewer/wider columns for horizontal space */
-        gap: 10px;
+        display: grid;
+        grid-template-columns: 2fr;
+        margin-bottom: 30px;
     }
 
     .step-image {
-        max-height: 200px; /* Smaller images to fit short height */
+        max-height: 80px; /* Smaller images to fit short height */
     }
     
     .btn {
         padding: 10px 18px;
         font-size: 0.9em;
+    }
+
+    .option-group {
+        margin-bottom: 0px; /* Remove bottom margin from options, like in 480px */
+    }
+    
+    .navigation-buttons {
+        margin-top: 10px; /* Add 10px top margin to pull the button up, like in 480px */
     }
     
     .option-card {
@@ -473,8 +562,9 @@ body.quest-bg {
     }
     
     .option-group, .column-group {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Fewer columns for options */
-        gap: 8px; /* Reduce gap between options */
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 40px;
     }
     
     .step-image {
@@ -484,6 +574,14 @@ body.quest-bg {
     .btn {
         padding: 8px 16px; /* Smaller buttons */
         font-size: 0.9em;
+    }
+
+    .option-group {
+        margin-bottom: 0px; /* Remove bottom margin from options, like in 480px */
+    }
+    
+    .navigation-buttons {
+        margin-top: 10px; /* Add 10px top margin to pull the button up, like in 480px */
     }
 
     .option-card {
@@ -511,7 +609,7 @@ body.quest-bg {
     }
     
     .responsive-heading {
-        font-size: 1.4em; /* Between tablet and mobile sizes */
+        font-size: 1.2em; /* Between tablet and mobile sizes */
     }
     
     .responsive-text {
@@ -527,8 +625,9 @@ body.quest-bg {
     }
     
     .option-group, .column-group {
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Adjust for mid-size screens */
-        gap: 7px;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 40px;
     }
     
     .step-image {
@@ -538,6 +637,14 @@ body.quest-bg {
     .btn {
         padding: 10px 30px;
         font-size: 0.9em;
+    }
+
+    .option-group {
+        margin-bottom: 0px; /* Remove bottom margin from options, like in 480px */
+    }
+    
+    .navigation-buttons {
+        margin-top: -10px; /* Add 10px top margin to pull the button up, like in 480px */
     }
 
     .option-card {
@@ -561,19 +668,27 @@ body.quest-bg {
     /* Adjustments for mobile phones */
     .story-container {
         padding: 25px; /* Even less padding */
+        width: 100%;
+        max-width: 95%;
+        /*height: 100vh;*/
     }
     
     .responsive-heading {
-        font-size: 1.4em; /* Even smaller headings */
+        font-size: 1.2em; /* Even smaller headings */
     }
     
     .responsive-text {
-        font-size: 0.9em; /* Smaller text */
+        font-size: 1em; /* Smaller text */
     }
     
     .option-group, .column-group {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Single column for options on very small screens */
-        gap: 6px;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 40px;
+    }
+
+    .option-group {
+        margin-bottom: 0px;
     }
     
     .step-image {
@@ -583,6 +698,9 @@ body.quest-bg {
     .btn {
         padding: 9px 30px;
         font-size: 0.9em;
+        /*maintain responsive width*/
+        width: 95%;
+        max-width: 800px;
     }
 
     .option-card {
@@ -630,8 +748,9 @@ body.quest-bg {
     }
     
     .option-group, .column-group {
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Even narrower columns */
-        gap: 5px; /* Tighter gaps */
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 20px;
     }
     
     .step-image {
@@ -648,8 +767,12 @@ body.quest-bg {
         font-size: 0.75em; /* Smaller font for cards */
     }
 
+    .option-group{
+        margin-bottom: 0px;
+    }
+
     .navigation-buttons {
-        margin-top: 8px; /* Less margin */
+        margin-top: -10px; /* Less margin */
     }
     
     #question-indicator {
@@ -666,17 +789,60 @@ body.quest-bg {
 
 /* Dynamic backgrounds for bigger screens (desktops/laptops) */
 @media (min-width: 1025px) {
+    .story-container{
+        max-width: 550px;
+        padding: 25px;
+    }
+
+    .start-screen h1{
+        font-size: 3em;
+    }
+
+    .story-step h2{
+        font-size: 1.4em;
+    }
+
+    .btn{
+        width: 300px;
+        font-size: 0.9em;
+    }
+
+    .option-card{
+        padding: 8px 12px;
+        font-size: 0.8em;
+    }
+
+    .large-group{
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+
+    .option-group{
+        margin-bottom: 15px;
+    }
+
+    .question-page .next-link {
+        margin-top: -10px;
+    }
+
+    .step-image {
+        max-height: 300px;
+    }
+
+
     /* Start page body: Solid color */
     body.start-bg-big {
-        background: #fcbd66; /* Solid color for start page body */
+        background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8); /* Solid color for start page body */
     }
     /* Quest pages body: Gradient */
     body.quest-bg-big {
-        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+        background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8);
+        /*background: linear-gradient(to bottom right, #a8c2ee, #d5e5ff, #a8c2ee);*/
     }
     /* Start page container: Gradient */
     .start-screen .story-container.start-container-big {
-        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+        background: none;
+        /*background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8);
+        /*background: linear-gradient(to bottom right, #a8c2ee, #d5e5ff, #a8c2ee);*/
     }
     /* Quest pages container: Gradient (overrides the default gradient) */
     .story-container.quest-container-big {
@@ -688,15 +854,18 @@ body.quest-bg {
 @media (max-width: 1024px) and (min-width: 768px) {
     /* Start page body: Solid color */
     body.start-bg-ipad {
-        background: #fcbd66; /* Solid color for start page body */
+        background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8); /* Solid color for start page body */
     }
     /* Quest pages body: Gradient */
     body.quest-bg-ipad {
-        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+        background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8);
+        /*background: linear-gradient(to bottom right, #a8c2ee, #d5e5ff, #a8c2ee);*/
     }
     /* Start page container: Gradient */
     .start-screen .story-container.start-container-ipad {
-        background: linear-gradient(to bottom right, #fcbd66, #f7d985, #fcbd66);
+        background: none;
+        /*background: linear-gradient(to bottom right, #cee4ea, #eafaff, #d1e3e8);
+        /*background: linear-gradient(to bottom right, #a8c2ee, #d5e5ff, #a8c2ee);*/
     }
     /* Quest pages container: No background (transparent, so body's gradient shows through) */
     .story-container.quest-container-ipad {

@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (indicator) {
                     console.log('Setting indicator for step:', targetStep);
                     const stepNum = parseInt(targetStep);
-                    if (targetStep >= 2 && targetStep <= 14) {
+                    if (targetStep >= 2 && targetStep <= 15) {
                         const questionNumber = stepNum - 1;
                         //const questionNumber = parseInt(targetStep) - 1;  // Step 2 = Q1, Step 3 = Q2, etc.
                         //console.log('questionNumber:', questionNumber);
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentStep = currentStepElement.getAttribute('data-step');
 
         // --- Skip validation for non-interactive steps (0, 1, 11) ---
-        if (currentStep === '0' || currentStep === '1' || currentStep === '11') {
+        if (currentStep === '0' || currentStep === '1' || currentStep === '16') {
             return true; // No selection needed, always valid
         }
         
