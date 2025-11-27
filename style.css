@@ -3,7 +3,11 @@
 
 /* 1. Base Styles: Set the background and enable centering */
 html, body {
-    overflow: hidden;
+    overflow: auto;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden;
     height: 100vh;
     /*width: 100vw;*/
     /*margin: 0;
@@ -23,7 +27,7 @@ body {
     display: flex;
     justify-content: center; /* Horizontal centering */
     align-items: center; /* Vertical centering */
-    min-height: 100vh; /* Ensures body is at least screen height */
+    /*min-height: 100vh; /* Ensures body is at least screen height */
 }
 
 body.start-bg {
@@ -67,7 +71,7 @@ body.quest-bg {
 /* We make the form tag fill the entire body height/width so it doesn't break centering */
 #makanQuestForm {
     /* Set height and width to fill the space available to it */
-    height: 100vh;
+    /*height: 100vh;*/
     width: 100%;
     
     /* Remove any default margin/padding browsers might apply to forms */
@@ -94,14 +98,16 @@ body.quest-bg {
     padding: 40px; /* Padding inside the card */
     /*box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
     
-    height: 100vh;
+    /*height: 100vh;*/
+    min-height: 100vh;
     box-sizing: border-box;
     /* Set the FIXED height for the card (Adjust this value!) */
     /*height: 550px; 
     
     /* Hides other steps when running the form */
     /*overflow: hidden; */
-    overflow: visible;
+    /*overflow: visible;*/
+    overflow: auto;
     position: relative; /* For future animations or absolute positioning */
 }
 
@@ -232,13 +238,13 @@ body.quest-bg {
     
     /* Ensure the image never exceeds a certain height inside the card */
     /* This prevents long images from pushing the button off the page */
-    max-height: 130px; /* Adjust this value as needed */
+    max-height: 100px; /* Adjust this value as needed */
     
     /* Good practice: make the corners slightly rounded */
     border-radius: 5px;
     
     /* Add a little space above and below the image */
-    margin: 20px 0; 
+    margin: 10px 0; 
     
     /* If the image is smaller than its max-width, center it */
     display: block; 
@@ -260,11 +266,55 @@ body.quest-bg {
     display: grid;
     /* Default to 3 columns, making them look like nice selection cards */
     /*grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); */
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));/*1fr;*/
     /*gap: 2px;*/
-    margin-bottom: 20px;
-    gap: 10px;
+    margin-bottom: 15px;
+    gap: 8px;
     width: 100%;
+}
+
+.side-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ✅ 4 per row */
+    gap: 2px;
+    width: 100%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.side-options .option-card {
+    width: 90%;   /* ✅ adjust this to whatever size you want */
+    /*margin: 0 auto; /* ✅ centers the card inside its grid cell */
+    padding: 0;
+    margin: 0;
+}
+
+.side-options .option-card img {
+    width: 125px;   /* ✅ adjust this number */ 
+    height: 125px;  /* ✅ adjust this number */
+    object-fit: contain;
+}
+
+.beverage-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ✅ 4 per row */
+    gap: 2px;
+    width: 100%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.beverage-options .option-card {
+    width: 90%;   /* ✅ adjust this to whatever size you want */
+    /*margin: 0 auto; /* ✅ centers the card inside its grid cell */
+    padding: 0;
+    margin: 0;
+}
+
+.beverage-options .option-card img {
+    width: 125px;   /* ✅ adjust this number */ 
+    height: 125px;  /* ✅ adjust this number */
+    object-fit: contain;
 }
 
 /* Layout for groups that need more vertical space (like Age, Soup, Beverages) */
@@ -280,14 +330,23 @@ body.quest-bg {
      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
-
 /* 3. Style the Option Card (the visual button) */
 .option-card {
-    display: block;
-    width: 85%;
+    display: flex;               /* ✅ change from block → flex. this is the one that fixed the alignment */
+    justify-content: center;     /* ✅ center horizontally */
+    align-items: center;         /* ✅ center vertically */
+
+    width: 100%;
+    margin: 0;
+    /*width: 70%;
+    margin: 0 auto;*/
+    padding: 11px 15px;
+
+    /*display: block;
+    width: 70%;
     margin: 0 auto;
-    padding: 11px 15px; /*vertical, horizontal*/
-    text-align: center;
+    padding: 11px 15px; /*vertical, horizontal
+    text-align: center;*/
     
     background-color: #171c41; /* White background */
     color: #ffffff; /* Text color */
@@ -297,7 +356,7 @@ body.quest-bg {
     cursor: pointer;
     /*font-weight: 600;*/
     /*font-family: 'Inter', sans-serif;*/
-    font-size: 0.85em;
+    font-size: 0.83em;
     font-weight: 400;
 
     transition: background-color 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -306,6 +365,15 @@ body.quest-bg {
     white-space: normal;
     overflow: hidden;
     word-wrap: break-word;
+}
+
+.option-card img {
+    width: 130px;      /* adjust this */
+    height: 130px;     /* adjust this */
+    object-fit: contain; /* keeps the image from stretching */
+    display: block;
+    margin: 0 auto;   /* centers the image */
+    display: block;
 }
 
 /* 4. Hover Effect (Light up on hover) */
@@ -378,8 +446,8 @@ body.quest-bg {
 
 #personality-poster {
     display: none;
-    max-width: 150%; /* Ensures it scales responsively on smaller screens */
-    max-height: 70vh; /* Caps height to 50% of viewport to prevent scrolling */
+    max-width: 170%; /* Ensures it scales responsively on smaller screens */
+    max-height: 55vh; /* Caps height to 50% of viewport to prevent scrolling */
     height: auto; /* Maintains aspect ratio */
     width: auto;
     object-fit: contain;
@@ -428,6 +496,20 @@ body.quest-bg {
     text-decoration: underline; /* Add the underline */
 }
 
+.results-card {
+    background-color: #79aab9;       /* soft background */
+    border: 1px solid #ddd;          /* subtle border */
+    border-radius: 8px;              /* rounded corners */
+    padding: 10px;                   /* inner spacing */
+    margin: 10px auto;               /* space around + center */
+    max-width: 400px;                /* keeps it neat */
+    /*box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* light shadow */
+    text-align: center;              /* center all text */
+    /*min-height: 40px;*/
+    height: auto; 
+}
+
+
 /* iPads and similar tablets in portrait (taller, square-like format) ipad air, ipad pro, surface pro 7*/
 @media (max-width: 1024px) and (min-width: 769px) and (orientation: portrait) {
     .story-container {
@@ -452,7 +534,7 @@ body.quest-bg {
     
     .option-group, .column-group {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         margin-bottom: 40px;
     }
     
@@ -508,7 +590,7 @@ body.quest-bg {
     
     .option-group, .column-group {
         display: grid;
-        grid-template-columns: 2fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         margin-bottom: 30px;
     }
 
@@ -563,7 +645,7 @@ body.quest-bg {
     
     .option-group, .column-group {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         margin-bottom: 40px;
     }
     
@@ -626,7 +708,7 @@ body.quest-bg {
     
     .option-group, .column-group {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         margin-bottom: 40px;
     }
     
@@ -683,7 +765,7 @@ body.quest-bg {
     
     .option-group, .column-group {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         margin-bottom: 40px;
     }
 
@@ -749,7 +831,7 @@ body.quest-bg {
     
     .option-group, .column-group {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         margin-bottom: 20px;
     }
     
@@ -782,7 +864,8 @@ body.quest-bg {
     }
     
     #personality-poster {
-        max-height: 35vh; /* Smaller poster to fit tiny screens */
+        max-height: 50vh; /* Smaller poster to fit tiny screens */
+        width: 70%;
         margin: 12px auto;
     }
 }

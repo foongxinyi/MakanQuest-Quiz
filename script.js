@@ -16,6 +16,86 @@ const personalityPosters = {
     "Spicy": "https://i.imgur.com/3WFAC6J.jpg"
 };
 
+// Costs in SGD
+const costs = {
+    mains: {
+        "Chicken Chop": 12.90,
+        "Spaghetti Bolognese": 11.90,
+        "Fish and Chips": 12.90,
+        "Ribeye Steak": 22.90,  
+        "Lamb Loin Chops": 26.90,
+        "Rosti & Grilled Sausage": 14.90
+    },
+    sides: {
+        "French Fries": 3.90,
+        "Mashed Potato": 3.90,
+        "Baked Potato": 5.90,
+        "Mac & Cheese": 5.90,
+        "Corn Niblets": 2.90,
+        "Coleslaw": 2.90,
+        "Garden Veggie": 4.90,
+        "Chicken Mid Wings": 6.90
+    },
+    soup: {
+        "Tomato Soup": 5.90,
+        "Cream of Mushroom": 3.90,
+        "Broccoli Cheddar Soup": 6.90,
+        "Clam Chowder": 8.90,
+        "Frech Onion Soup": 9.90,
+        "None": 0  // No cost if None
+    },
+    beverage: {
+        "Soft Drink": 2.90,
+        "Iced Tea": 2.90,
+        "Bottled Water": 0.80,
+        "Milkshake": 6.90,
+        "Hot Coffee": 2.90,
+        "Hot Tea": 2.90,
+        "Grapefruit Fizz": 8.90,
+        "None": 0  // No cost if None
+    }
+};
+
+// Calories in kcal
+const calories = {
+    mains: {
+        "Chicken Chop": 600,
+        "Spaghetti Bolognese": 750,
+        "Fish and Chips": 838,
+        "Ribeye Steak": 807,
+        "Lamb Loin Chops": 562,
+        "Rosti & Grilled Sausage": 878
+    },
+    sides: {
+        "French Fries": 164,
+        "Mashed Potato": 89,
+        "Baked Potato": 129,
+        "Mac & Cheese": 380,
+        "Corn Niblets": 90,
+        "Coleslaw": 68,
+        "Garden Veggie": 60,
+        "Chicken Mid Wings": 320
+    },
+    soup: {
+        "Tomato Soup": 150,
+        "Cream of Mushroom": 200,
+        "Broccoli Cheddar Soup": 250,
+        "Clam Chowder": 300,
+        "French Onion Soup": 250,
+        "None": 0
+    },
+    beverage: {
+        "Soft Drink": 150,
+        "Iced Tea": 100,
+        "Bottled Water": 0,
+        "Milkshake": 300,
+        "Hot Coffee": 2,
+        "Hot Tea": 2,
+        "Grapefruit Fizz": 150,
+        "None": 0
+    }
+};
+
 // 1. Storage Variable for all user selections (Still used for validation)
 const userChoices = {};
 
@@ -79,11 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (indicator) {
                     console.log('Setting indicator for step:', targetStep);
                     const stepNum = parseInt(targetStep);
-                    if (targetStep >= 2 && targetStep <= 15) {
+                    if (targetStep >= 2 && targetStep <= 11) {
                         const questionNumber = stepNum - 1;
                         //const questionNumber = parseInt(targetStep) - 1;  // Step 2 = Q1, Step 3 = Q2, etc.
                         //console.log('questionNumber:', questionNumber);
-                        indicator.textContent = `Q${questionNumber}/14`;  // e.g., Q1/10 for step 2
+                        indicator.textContent = `Q${questionNumber}/10`;  // e.g., Q1/10 for step 2
                         indicator.style.display = 'block';  // Show the indicator
                         console.log('Updated indicator to:', indicator.textContent);
                     } else {
@@ -138,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 storyContainer.classList.remove('start-container-ipad');
             }
         }
+        window.scrollTo(0, 0);
     };
 
     // Function to capture the selection from the current step
@@ -147,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentStep = currentStepElement.getAttribute('data-step');
 
         // --- Skip validation for non-interactive steps (0, 1, 11) ---
-        if (currentStep === '0' || currentStep === '1' || currentStep === '16') {
+        if (currentStep === '0' || currentStep === '1' || currentStep === '12') {
             return true; // No selection needed, always valid
         }
         
@@ -176,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- CAPTURE LOGIC FOR CHECKBOXES (Step 5: sides) ---
         const checkboxes = currentStepElement.querySelectorAll('input[type="checkbox"][name="sides"]');
         
-        if (checkboxes.length > 0 && currentStep === '5') {
+        if (checkboxes.length > 0 && currentStep === '3') {
             const checkedValues = [];
             const questionKey = checkboxes[0].name;
 
@@ -226,15 +307,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.stopPropagation();
                 
                 const currentStepElement = button.closest('.story-step');
+                const currentStep = currentStepElement.getAttribute('data-step');
                 const isSelectionValid = captureSelection(currentStepElement);
 
                 if (isSelectionValid) {
-                    const targetStep = button.getAttribute('data-target');
+                    let targetStep = button.getAttribute('data-target'); // Default to static target
+                    
+                    // Conditional navigation for step 4 (soupb: Yes/No)
+                    if (currentStep === '4') {
+                        if (userChoices["soupb"] === "Yes") {
+                            targetStep = '5'; // Go to soup selection
+                        } else if (userChoices["soupb"] === "No") {
+                            targetStep = '6'; // Skip to beverageb
+                        }
+                    }
+                    
+                    // Conditional navigation for step 6 (beverageb: Yes/No)
+                    if (currentStep === '6') {
+                        if (userChoices["beverageb"] === "Yes") {
+                            targetStep = '7'; // Go to beverage selection
+                        } else if (userChoices["beverageb"] === "No") {
+                            targetStep = '8'; // Skip to next section
+                        }
+                    }
+                    
                     if (targetStep) {
                         showStep(targetStep);
                         console.log("Current Choices:", userChoices); 
                     }
-                } 
+                }
+
+                //if (isSelectionValid) {
+                //    const targetStep = button.getAttribute('data-target');
+                //    if (targetStep) {
+                //        showStep(targetStep);
+                //        console.log("Current Choices:", userChoices); 
+                //    }
+                //} 
             });
         }
     });
@@ -261,6 +370,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 msgDiv.remove();  // Immediately remove the message
             }
 
+            // 2. Calculate totals based on user choices
+            let totalCost = 0;
+            let totalCalories = 0;
+            // Add main dish
+            if (userChoices.mains) {
+                totalCost += costs.mains[userChoices.mains] || 0;
+                totalCalories += calories.mains[userChoices.mains] || 0;
+            }
+            // Add sides (exactly 2, as comma-separated string)
+            if (userChoices.sides) {
+                const selectedSides = userChoices.sides.split(', ');
+                selectedSides.forEach(side => {
+                    totalCost += costs.sides[side] || 0;
+                    totalCalories += calories.sides[side] || 0;
+                });
+            }
+            // Add soup only if "Yes" was chosen and a soup selected (not "None")
+            if (userChoices.soupb === "Yes" && userChoices.soup && userChoices.soup !== "None") {
+                totalCost += costs.soup[userChoices.soup] || 0;
+                totalCalories += calories.soup[userChoices.soup] || 0;
+            }
+            // Add beverage only if "Yes" was chosen and a beverage selected (not "None")
+            if (userChoices.beverageb === "Yes" && userChoices.beverage && userChoices.beverage !== "None") {
+                totalCost += costs.beverage[userChoices.beverage] || 0;
+                totalCalories += calories.beverage[userChoices.beverage] || 0;
+            }
+
             // 2. Set loading state
             const originalText = submitButton.textContent;
             submitButton.textContent = 'Submitting...';
@@ -273,6 +409,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // 3. Prepare the final JSON payload
             //const finalPayload = { ...userChoices };
             const finalPayload = new URLSearchParams(userChoices);
+            finalPayload.append('total_cost', totalCost);
+            finalPayload.append('total_calories', totalCalories);
             // Optional: Log the clean payload for debugging
             console.log("Final JSON Payload for Google Sheets:", finalPayload.toString());
             //const finalPayload = {
@@ -289,6 +427,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Optional: Log the clean payload for debugging
             //console.log("Final JSON Payload for Web3Forms:", finalPayload);
+            
+            // Debug: Log totals
+            console.log('Total Cost:', totalCost);
+            console.log('Total Calories:', totalCalories);
+            
+            // Display totals
+            const costElement = document.getElementById('total-cost');
+            const calElement = document.getElementById('total-calories');
+            console.log('Cost Element:', costElement);  // Check if it exists
+            console.log('Cal Element:', calElement);    // Check if it exists
+            
+            if (costElement) costElement.textContent = totalCost.toFixed(2);
+            if (calElement) calElement.textContent = totalCalories;
+
+            const tastePreference = userChoices["taste preference"];
+            const posterElement = document.getElementById('personality-poster');
+            if (posterElement) {
+                const posterUrl = personalityPosters[tastePreference];
+                if (posterUrl) {
+                    posterElement.src = posterUrl;
+                    posterElement.style.display = 'block';  // Show the image
+                    posterElement.alt = `Personality Poster for ${tastePreference}`;  // Update alt text for accessibility
+                } else {
+                    // Fallback: Hide or show a default poster if no match
+                    posterElement.style.display = 'none';
+                }
+            }
+
+            const targetStep = submitButton.getAttribute('data-target');
+            if (targetStep) {
+                showStep(targetStep);
+            }
 
             try {
                 // 4. Send the data to Web3Forms as JSON
@@ -331,29 +501,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Submission successful!
                     console.log('Form data written successfully to Google Sheets.');
 
-                    const tastePreference = userChoices["taste preference"];
-                    const posterElement = document.getElementById('personality-poster');
-                    if (posterElement) {
-                        const posterUrl = personalityPosters[tastePreference];
-                        if (posterUrl) {
-                            posterElement.src = posterUrl;
-                            posterElement.style.display = 'block';  // Show the image
-                            posterElement.alt = `Personality Poster for ${tastePreference}`;  // Update alt text for accessibility
-                        } else {
-                            // Fallback: Hide or show a default poster if no match
-                            posterElement.style.display = 'none';
-                        }
-                    }
+                    // // Debug: Log totals
+                    // console.log('Total Cost:', totalCost);
+                    // console.log('Total Calories:', totalCalories);
+                    
+                    // // Display totals
+                    // const costElement = document.getElementById('total-cost');
+                    // const calElement = document.getElementById('total-calories');
+                    // console.log('Cost Element:', costElement);  // Check if it exists
+                    // console.log('Cal Element:', calElement);    // Check if it exists
+                    
+                    // if (costElement) costElement.textContent = totalCost.toFixed(2);
+                    // if (calElement) calElement.textContent = totalCalories;
+
+                    // const tastePreference = userChoices["taste preference"];
+                    // const posterElement = document.getElementById('personality-poster');
+                    // if (posterElement) {
+                    //     const posterUrl = personalityPosters[tastePreference];
+                    //     if (posterUrl) {
+                    //         posterElement.src = posterUrl;
+                    //         posterElement.style.display = 'block';  // Show the image
+                    //         posterElement.alt = `Personality Poster for ${tastePreference}`;  // Update alt text for accessibility
+                    //     } else {
+                    //         // Fallback: Hide or show a default poster if no match
+                    //         posterElement.style.display = 'none';
+                    //     }
+                    // }
                     //const descElement = document.getElementById('personality-desc');
                     //if (descElement) {
                     //    descElement.textContent = personalityDescriptions[tastePreference] || "a unique flavor explorer with taste yet to be defined!";
                     //}
 
                     // 5. Manually advance to the final thank-you step (data-step="11")
-                    const targetStep = submitButton.getAttribute('data-target');
-                    if (targetStep) {
-                        showStep(targetStep);
-                    }
+                    // const targetStep = submitButton.getAttribute('data-target');
+                    // if (targetStep) {
+                    //     showStep(targetStep);
+                    // }
                     
                 } else {
                     // Handle submission failures
